@@ -23,7 +23,7 @@ window.onload = function init()
                                        0.2, -0.8,
                                       -0.2, -0.8]);
 
-    var triangle_strip = new Float32Array([
+    var triangle_fan = new Float32Array([
       -0.2,0.4,
       -0.8,0.4,
       -0.8,0.8,
@@ -48,7 +48,7 @@ window.onload = function init()
     
     var bufferId = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
-    gl.bufferData( gl.ARRAY_BUFFER,triangle_strip, gl.STATIC_DRAW );
+    gl.bufferData( gl.ARRAY_BUFFER,triangle_fan, gl.STATIC_DRAW );
 
     // Associate out shader variables with our data buffer
     
@@ -62,5 +62,5 @@ window.onload = function init()
 
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
-    gl.drawArrays( gl.TRIANGLE_STRIP, 0, 8 );
+    gl.drawArrays( gl.TRIANGLE_FAN, 0, 8 );
 }
