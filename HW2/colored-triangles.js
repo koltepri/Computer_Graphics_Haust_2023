@@ -51,12 +51,13 @@ window.onload = function init()
 
 
 function render() {
-    for(let i = 0; i < 2; i++) {
-      R = Math.random();
-      G = Math.random();
-      B = Math.random();
+    for(let i = 0; i < 9; i+=3) {
+      var R = Math.random();
+      var G = Math.random();
+      var B = Math.random();
+      color = vec4(R,G,B,1.0);
       gl.clear( gl.COLOR_BUFFER_BIT );
-      gl.uniform4fv( colorLoc, vec4(R,G,B,1.0) ); // vona etta virki
-      gl.drawArrays( gl.POINTS, i, 1);
+      gl.uniform4fv( colorLoc,color); // vec4 not defined
+      gl.drawArrays( gl.TRIANGLES, i, 3);
     }
 }
