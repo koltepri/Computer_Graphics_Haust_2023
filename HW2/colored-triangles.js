@@ -50,10 +50,10 @@ window.onload = function init()
 
 
 function render() {
-    for(let i = 0, i < 2; i++) {
+    for(let i = 0; i < 2; i++) {
       gl.clear( gl.COLOR_BUFFER_BIT );
       random_color = [];
-      for(let i = 0, i < 4; i++) {
+      for(let i = 0; i < 4; i++) {
         random_color.push(Math.random());
       }
       gl.uniform4fv( colorLoc, vec4(random_color)); // vona etta virki
