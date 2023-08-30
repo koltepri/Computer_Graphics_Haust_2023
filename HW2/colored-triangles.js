@@ -1,6 +1,7 @@
 
 var gl;
 var points;
+var colorLoc;
 
 window.onload = function init()
 {
@@ -52,11 +53,11 @@ window.onload = function init()
 function render() {
     for(let i = 0; i < 2; i++) {
       gl.clear( gl.COLOR_BUFFER_BIT );
-      random_color = [];
+      rc= [];
       for(let i = 0; i < 4; i++) {
-        random_color.push(Math.random());
+        rc.push(Math.random());
       }
-      gl.uniform4fv( colorLoc, vec4(random_color)); // vona etta virki
+      gl.uniform4fv( colorLoc, vec4(rc.pop,rc.pop,rc.pop,1.0)); // vona etta virki
       gl.drawArrays( gl.POINTS, i, 1);
     }
 }
