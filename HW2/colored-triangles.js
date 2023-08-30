@@ -52,8 +52,11 @@ window.onload = function init()
 
 function render() {
     for(let i = 0; i < 2; i++) {
+      R = Math.random();
+      G = Math.random();
+      B = Math.random();
       gl.clear( gl.COLOR_BUFFER_BIT );
-      gl.uniform4fv( colorLoc, vec4(Math.random(),Math.random(),Math.random(),1.0)); // vona etta virki
+      gl.uniform4fv( colorLoc, vec4(R,G,B,1.0) ); // vona etta virki
       gl.drawArrays( gl.POINTS, i, 1);
     }
 }
