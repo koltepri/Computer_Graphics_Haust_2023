@@ -19,6 +19,9 @@ window.onload = function init()
     var triangle_strip = new Float32Array([
       -0.5,-0.25,0.5,-0.25,0.5-0.25,0.5,0.25
     ]);
+    //var triangle_fan = new Float32Array([
+//
+  //  ])
     //  Configure WebGL
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
@@ -46,5 +49,5 @@ window.onload = function init()
 
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
-    gl.drawArrays( gl.TRIANGLE_STRIP, 0, 6 );
+    gl.drawArrays( gl.TRIANGLE_STRIP, 0, 3 );
 }
