@@ -55,9 +55,9 @@ function render() {
       var R = Math.random();
       var G = Math.random();
       var B = Math.random();
-      var color = vec4(1.0,0.5,0.5,1.0);
+      //var color = vec4(1.0,0.5,0.5,1.0);
       gl.clear( gl.COLOR_BUFFER_BIT );
-      gl.uniform4fv( colorLoc,color); // vec4 not defined
+      gl.uniform4fv( colorLoc,vec4(1.0,0.5,0.5,1.0) ); // vec4 not defined
       gl.drawArrays( gl.TRIANGLES, i, 3);
     }
 }
