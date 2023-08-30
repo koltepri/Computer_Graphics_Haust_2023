@@ -27,7 +27,7 @@ window.onload = function init()
       -0.5,-0.25,
       0.5,-0.25,
       0.5,0.25,
-      0.5,-0.25
+      -0.5,0.25
     ]);
     //  Configure WebGL
     gl.viewport( 0, 0, canvas.width, canvas.height );
