@@ -17,7 +17,7 @@ window.onload = function init()
     var vertices = new Float32Array([-0.5, -0.25, 0.5, 0.25, -0.5, 0.25,
 									 -0.5, -0.25, 0.5, -0.25, 0.5, 0.25]);
     var triangle_strip = new Float32Array([
-      -0.5,-0.25,0.5,-0.25,0.5-0.25,0.5,0.25
+      -0.5,-0.25,0.5,-0.25,0.5,-0.25,0.5,0.25
     ]);
     var triangle_fan = new Float32Array([
       -0.5,-0.25,0.5,-0.25,0.5,0.25,0.5,-0.25
