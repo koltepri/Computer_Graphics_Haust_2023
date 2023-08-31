@@ -10,7 +10,7 @@ window.onload = function init()
     gl = WebGLUtils.setupWebGL( canvas );
     if ( !gl ) { alert( "WebGL isn't available" ); }
     
-    var triangle_size = 0.3;
+    var triangle_size = 0.1;
     var triangle_angle = Math.PI/3;
     points = []; // vandaddi semikommu...
 
@@ -52,7 +52,7 @@ window.onload = function init()
 
 
 function render() {
-    for(let i = 0; i < 600; i+=6) {
+    for(let i = 0; i < 300; i+=6) {
       var R = Math.random();
       var G = Math.random();
       var B = Math.random();
