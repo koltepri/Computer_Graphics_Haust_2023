@@ -28,7 +28,7 @@ window.onload = function init()
         
     ];
 
-    divideRectangle( vertices[0], vertices[1], vertices[2],vertices[3]
+    divideRectangle( vertices[0], vertices[1], vertices[2],vertices[3],
                     NumTimesToSubdivide);
 
     //
