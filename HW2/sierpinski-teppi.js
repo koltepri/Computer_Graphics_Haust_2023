@@ -107,6 +107,8 @@ function divideRectangle( a, b, c, d, count )
 function render()
 {
     gl.clear( gl.COLOR_BUFFER_BIT );
-    gl.drawArrays( gl.LINE_LOOP, 0, points.length );
+    for(let i = 0, i < points.length; i+=4) {
+      gl.drawArrays( gl.LINE_LOOP, i, 4);
+    }
 }
 
