@@ -12,7 +12,7 @@ window.onload = function init()
     
     var triangle_size = 0.3;
     var triangle_angle = Math.pi/3;
-    points = []
+    points = []; // vandaddi semikommu...
 
     for(let i = 0; i < 100; i++) {
       p1X = Math.random() * -1.0;
@@ -23,6 +23,7 @@ window.onload = function init()
       p3Y = p1Y + Math.sin(5*Math.pi/3) * triangle_size;
       points.push(p1X,p1Y,p2X,p2Y,p3X,p3Y);
     }
+    console.log(points);
     
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
@@ -36,7 +37,7 @@ window.onload = function init()
     
     var bufferId = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
-    gl.bufferData( gl.ARRAY_BUFFER,points, gl.STATIC_DRAW );
+    gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
 
     // Associate out shader variables with our data buffer
     
