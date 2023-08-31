@@ -5,7 +5,7 @@ var gl;
 
 var points = [];
 
-var NumTimesToSubdivide = 5;
+var NumTimesToSubdivide = 3;
 
 window.onload = function init()
 {
@@ -59,9 +59,8 @@ window.onload = function init()
 
 function rectangle( a, b, c, d )
 {
-    //points.push( a, b, c, d );
-    points.push(vec3(a,c,d),vec3(a,d,b)); // breyta i þrihyrninga
-    
+    points.push(a,b,c);
+    points.push(c,b,d);
 }
 
 function divideRectangle( a, b, c, d, count )
