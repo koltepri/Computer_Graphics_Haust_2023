@@ -25,7 +25,7 @@ window.onload = function init()
     }
     
     gl.viewport( 0, 0, canvas.width, canvas.height );
-    gl.clearColor( 0.95, 1.0, 1.0, 1.0 );
+    gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
     
     //  Load shaders and initialize attribute buffers
     
@@ -57,7 +57,8 @@ function render() {
       G = Math.random();
       B = Math.random();
       color = vec4(R,G,B,1.0);
-      gl.uniform4fv( colorLoc, color ); // vec4 not defined
+      gl.uniform4fv( colorLoc, color ); 
       gl.drawArrays( gl.TRIANGLES, i, 3);
+      gl.clear( gl.COLOR_BUFFER_BIT );
     }
 }
