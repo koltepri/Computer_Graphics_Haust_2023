@@ -15,15 +15,14 @@ window.onload = function init()
     points = []; // vandaddi semikommu...
 
     for(let i = 0; i < 100; i++) {
-      p1Y = Math.round(Math.random()) * 2 - 1;
-      p1X = Math.round(Math.random()) * 2 - 1;
+      p1Y = Math.random()*Math.round(Math.random()) * 2 - 1;
+      p1X = Math.random()*Math.round(Math.random()) * 2 - 1;
       p2X = p1X + Math.cos(4*Math.PI/3) * triangle_size;
       p2Y = p1Y + Math.sin(4*Math.PI/3) * triangle_size;
       p3X = p1X + Math.cos(5*Math.PI/3) * triangle_size;
       p3Y = p1Y + Math.sin(5*Math.PI/3) * triangle_size;
       points.push(p1X,p1Y,p2X,p2Y,p3X,p3Y);
     }
-    console.log(points);
     
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
