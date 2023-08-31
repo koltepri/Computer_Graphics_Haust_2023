@@ -56,9 +56,8 @@ function render() {
       R = Math.random();
       G = Math.random();
       B = Math.random();
-      color = vec4(R,G,B,1.0);
-      gl.uniform4fv( colorLoc, color ); 
+      //color = vec4(R,G,B,1.0);
+      gl.uniform4fv( colorLoc, vec4(R,G,B,1.0) ); 
       gl.drawArrays( gl.TRIANGLES, i, 3);
-      gl.clear( gl.COLOR_BUFFER_BIT );
     }
 }
