@@ -62,7 +62,7 @@ function rectangle( a, b, c, d )
     points.push( a, b, c, d );
 }
 
-function divideTriangle( a, b, c, d, count )
+function divideRectangle( a, b, c, d, count )
 {
 
     // check for end of recursion
