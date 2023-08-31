@@ -15,8 +15,8 @@ window.onload = function init()
     points = []; // vandaddi semikommu...
 
     for(let i = 0; i < 100; i++) {
-      p1X = Math.random() * -1.0;
-      p1Y = Math.random() * -1.0;
+      p1Y = Math.round(Math.random()) * 2 - 1;
+      p1X = Math.round(Math.random()) * 2 - 1;
       p2X = p1X + Math.cos(4*Math.PI/3) * triangle_size;
       p2Y = p1Y + Math.sin(4*Math.PI/3) * triangle_size;
       p3X = p1X + Math.cos(5*Math.PI/3) * triangle_size;
