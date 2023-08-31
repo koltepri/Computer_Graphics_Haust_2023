@@ -15,8 +15,8 @@ window.onload = function init()
     points = []; // vandaddi semikommu...
 
     for(let i = 0; i < 100; i++) {
-      p1Y = Math.random()*Math.round(Math.random()) * 2 - 1;
-      p1X = Math.random()*Math.round(Math.random()) * 2 - 1;
+      p1Y = Math.random()*(Math.round(Math.random()) * 2 - 1);
+      p1X = Math.random()*(Math.round(Math.random()) * 2 - 1);
       p2X = p1X + Math.cos(4*Math.PI/3) * triangle_size;
       p2Y = p1Y + Math.sin(4*Math.PI/3) * triangle_size;
       p3X = p1X + Math.cos(5*Math.PI/3) * triangle_size;
@@ -52,10 +52,10 @@ window.onload = function init()
 
 function render() {
     for(let i = 0; i < 300; i+=6) {
-      var R = Math.random();
-      var G = Math.random();
-      var B = Math.random();
-      var color = vec4(R,G,B,1.0);
+      R = Math.random();
+      G = Math.random();
+      B = Math.random();
+      color = vec4(R,G,B,1.0);
       gl.clear( gl.COLOR_BUFFER_BIT );
       gl.uniform4fv( colorLoc,color ); // vec4 not defined
       gl.drawArrays( gl.TRIANGLES, i, 6);
