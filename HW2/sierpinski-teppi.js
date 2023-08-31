@@ -59,7 +59,9 @@ window.onload = function init()
 
 function rectangle( a, b, c, d )
 {
-    points.push( a, b, c, d );
+    //points.push( a, b, c, d );
+    points.push(vec3(a,c,d),vec3(a,d,b)); // breyta i þrihyrninga
+    
 }
 
 function divideRectangle( a, b, c, d, count )
@@ -107,8 +109,6 @@ function divideRectangle( a, b, c, d, count )
 function render()
 {
     gl.clear( gl.COLOR_BUFFER_BIT );
-    for(let i = 0; i < points.length; i+=4) {
-      gl.drawArrays( gl.LINE_LOOP, i, 4);
-    }
+    gl.drawArrays( gl.TRIANGLES, 0, points.length);
 }
 
