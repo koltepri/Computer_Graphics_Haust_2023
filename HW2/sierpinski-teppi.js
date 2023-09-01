@@ -5,7 +5,7 @@ var gl;
 
 var points = [];
 
-var NumTimesToSubdivide = 1;
+var NumTimesToSubdivide = 2;
 
 window.onload = function init()
 {
@@ -93,9 +93,9 @@ function divideRectangle( a, b, c, d, count )
 
         // three new triangles
       divideRectangle(a,ab1,ac1,ad1,count);
-      //divideRectangle(ab1,ab2,bd1,ac1,count);
-      //divideRectangle(ab2,b,bc1,bd1,count);
-      //divideRectangle(ad1,ac1,bc2,ad2,count);
+      divideRectangle(ab1,ab2,bd1,ac1,count);
+      divideRectangle(ab2,b,bc1,bd1,count);
+      divideRectangle(ad1,ac1,bd2,ad2,count);
       divideRectangle(bd1,bc1,bc2,ac2,count);
       divideRectangle(ad2,bd2,cd2,d,count);
       divideRectangle(bd2,ac2,cd1,cd2,count);
