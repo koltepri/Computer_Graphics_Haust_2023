@@ -5,7 +5,7 @@ var gl;
 
 var points = [];
 
-var NumTimesToSubdivide = 2;
+var NumTimesToSubdivide = 1;
 
 window.onload = function init()
 {
@@ -58,8 +58,6 @@ window.onload = function init()
 
 function rectangle( a, b, c, d )
 {
-    //points.push(a,b,c);
-    //points.push(a,c,d);
     points.push(a,b,d);
     points.push(b,c,d);
 }
