@@ -5,7 +5,7 @@ var gl;
 
 var points = [];
 
-var NumTimesToSubdivide = 5;
+var NumTimesToSubdivide = 2;
 
 window.onload = function init()
 {
@@ -23,8 +23,8 @@ window.onload = function init()
     var vertices = [  //upprunalegi kassin
         vec2( -1, 1 ), //a
         vec2( 1,  1 ), //b
-        vec2( -1, -1 ), //c
         vec2( 1, -1 ) //d
+        vec2( -1, -1 ), //c
     ];
 
     divideRectangle( vertices[0], vertices[1], vertices[2],vertices[3],
