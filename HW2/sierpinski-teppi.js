@@ -92,7 +92,7 @@ function divideRectangle( a, b, c, d, count )
         --count;
 
         // three new triangles
-      divideRectangle(a,ab1,ac1,ad1,count);
+      //divideRectangle(a,ab1,ac1,ad1,count);
       divideRectangle(ab1,ab2,bd1,ac1,count);
       divideRectangle(ab2,b,bc1,bd1,count);
       divideRectangle(ad1,ac1,bc2,ad2,count);
