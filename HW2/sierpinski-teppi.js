@@ -76,31 +76,30 @@ function divideRectangle( a, b, c, d, count )
 
         var ab1 = mix( a, b, 1/3 );
         var ab2 = mix( a, b, 2/3 );
-        var ac1 = mix( a, c, 1/3 );
-        var ac2 = mix( a, c, 2/3 );
-        var bd1 = mix( b, d, 1/3 );
-        var bd2 = mix( b, d, 2/3 );
+        var ad1 = mix( a, d, 1/3 );
+        var ad2 = mix( a, d, 2/3 );
+        var bc1 = mix( b, c, 1/3 );
+        var bc2 = mix( b, c, 2/3 );
         var cd1 = mix( c, d, 1/3 );
         var cd2 = mix( c, d, 2/3 );
         
         //hornlinur
-        var ad1 = mix( a, d, 1/3);
-        var ad2 = mix( a, d, 2/3);
-        var bc1 = mix( b, c, 1/3);
-        var bc2 = mix( b, c, 2/3);
+        var ac1 = mix( a, c, 1/3);
+        var ac2 = mix( a, c, 2/3);
+        var bd1 = mix( b, d, 1/3);
+        var bd2 = mix( b, d, 2/3);
 
         --count;
 
         // three new triangles
-      divideRectangle(a,ab1,ad1,ac1,count);
-      divideRectangle(ab1,ab2,bc1,ad1,count);
-      divideRectangle(ab2,b,bd1,bc1,count);
-      divideRectangle(ac1,ad1,bc2,ac2,count);
-      divideRectangle(ac2,bc2,cd1,c,count);
-      divideRectangle(bc2,ad2,cd2,cd1,count);
-      divideRectangle(ad2,bd2,d,cd2,count);
-      divideRectangle(bc1,bd1,bd2,ad2,count);
-      
+      divideRectangle(a,ab1,ac1,ad1,count);
+      divideRectangle(ab1,ab2,bd1,ac1,count);
+      divideRectangle(ab2,b,bc1,bd1,count);
+      divideRectangle(ad1,ac1,bc2,ad2,count);
+      divideRectangle(bd1,bc1,bc2,ac2,count);
+      divideRectangle(ad2,bd2,cd2,d,count);
+      divideRectangle(bd2,ac2,cd1,cd2,count);
+      divideRectangle(ac2,bc2,c,cd1,count);
     }
 }
 
