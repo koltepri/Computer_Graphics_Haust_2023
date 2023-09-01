@@ -5,7 +5,7 @@ var gl;
 
 var points = [];
 
-var NumTimesToSubdivide = 2;
+var NumTimesToSubdivide = 1;
 
 window.onload = function init()
 {
@@ -25,7 +25,6 @@ window.onload = function init()
         vec2( 1,  1 ), //b
         vec2( -1, -1 ), //c
         vec2( 1, -1 ) //d
-        
     ];
 
     divideRectangle( vertices[0], vertices[1], vertices[2],vertices[3],
