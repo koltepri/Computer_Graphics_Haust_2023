@@ -59,7 +59,7 @@ window.onload = function init()
 function rectangle( a, b, c, d )
 {
     points.push(a,b,c);
-    points.push(c,b,d);
+    points.push(a,c,d);
 }
 
 function divideRectangle( a, b, c, d, count )
