@@ -47,7 +47,7 @@ function render() {
 
     for(let i = 0; i < 3+nrOfLanes; i++) {
       gl.bindBuffer( gl.ARRAY_BUFFER, bufferTiles);
-      gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
+      gl.vertexAttribPointer( locPosition, 1, gl.FLOAT, false, 0, 0 );
       gl.uniform4fv( locColor, flatten(colorTiles[i]) );
       gl.drawArrays( gl.TRIANGLE_FAN, i*16, 4*4);
     }
@@ -60,14 +60,14 @@ function createBoxes() {
   var colors = [];
   var x0 = -1,
       x1 = 1
-  for(let i = 0; i < totalSplits -1 ; i++) {
+  for(let i = 0; i < totalSplits; i++) {
     let p0 = vec2(x0,-1 + boxYSize*i);
     let p1 = vec2(x1,-1+boxYSize*i);
     let p2 = vec2(x1,-1+boxYSize*(i+1))
     let p3 = vec2(x0,-1+boxYSize*(i+1))
     vertices.push(p0,p1,p2,p3)
     if (i == 0 || i == totalSplits-1) { // upphafs og endapunktar
-        colorTiles.push(vec4(1.0,1.0,1.0,1.0));
+      colorTiles.push(vec4(1.0,1.0,1.0,1.0));
     }
     else if (i == totalSplits) { // stigasvaedi
       colorTiles.push(vec4(0.0,1.0,1.0,1.0)); 
