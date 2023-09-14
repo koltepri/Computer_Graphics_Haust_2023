@@ -7,8 +7,9 @@
 /////////////////////////////////////////////////////////////////
 var canvas;
 var gl;
+var nrOfLanes = 5;
 
-var colorTiles = []
+var colorTiles = [];
 
 window.onload = function init() {
     canvas = document.getElementById( "gl-canvas" );
@@ -23,7 +24,7 @@ window.onload = function init() {
     var program = initShaders( gl, "vertex-shader", "fragment-shader" );
     gl.useProgram( program );
 
-    verticesTiles = createBoxes(5);
+    verticesTiles = createBoxes();
 
     bufferTiles = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferTiles);
@@ -41,7 +42,7 @@ window.onload = function init() {
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
 
-    for(let i = 0; i < 8; i++) {
+    for(let i = 0; i < 3+nrOfLanes; i++) {
       gl.bindBuffer( gl.ARRAY_BUFFER, bufferTiles);
       gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
       gl.uniform4fv( locColor, flatten(colorTiles[i]) );
@@ -49,7 +50,7 @@ function render() {
     }
 }
 
-function createBoxes(nrOfLanes) {
+function createBoxes() {
   var totalSplits = 3 + nrOfLanes;
   var boxYSize = 1/totalSplits;
   var vertices = [];
