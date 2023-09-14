@@ -36,7 +36,7 @@ window.onload = function init() {
 
     var vPosition = gl.getAttribLocation(program,"vPosition");
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
-    gl.enableVertexAttribArray( vPosition );
+    gl.enableVertexAttribArray(vPosition);
 
     var bufferTilesColor = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, bufferTilesColor);
@@ -44,7 +44,7 @@ window.onload = function init() {
 
     var vColor = gl.getAttribLocation( program, "vColor" );
     gl.vertexAttribPointer( vColor, 4, gl.FLOAT, false, 0, 0 );
-    gl.enableVertexAttribArray( vColor );
+    gl.enableVertexAttribArray(vColor);
     
     render();
 
@@ -56,6 +56,8 @@ function render() {
     for(let i = 0; i < 3+nrOfLanes; i++) {
       gl.drawArrays( gl.TRIANGLE_FAN, i*4, 4);
     }
+    window.requestAnimFrame(render);
+
 }
 
 function createBoxes() {
@@ -63,8 +65,8 @@ function createBoxes() {
   var boxYSize = 1/totalSplits;
   var vertices = [];
   var colors = [];
-  var x0 = -1,
-      x1 = 1
+  var x0 = -1.0,
+      x1 = 1.0
   for(let i = 0; i < totalSplits; i++) {
     let p0 = vec2(x0,-1 + boxYSize*i);
     let p1 = vec2(x1,-1+boxYSize*i);
