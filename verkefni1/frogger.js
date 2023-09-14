@@ -47,9 +47,9 @@ function render() {
 
     for(let i = 0; i < 3+nrOfLanes; i++) {
       gl.bindBuffer( gl.ARRAY_BUFFER, bufferTiles);
-      gl.vertexAttribPointer( locPosition, 1, gl.FLOAT, false, 0, 0 );
+      gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
       gl.uniform4fv( locColor, flatten(colorTiles[i]) );
-      gl.drawArrays( gl.TRIANGLE_FAN, i*16, 4*4);
+      gl.drawArrays( gl.TRIANGLE_FAN, i*4, 4);
     }
 }
 
