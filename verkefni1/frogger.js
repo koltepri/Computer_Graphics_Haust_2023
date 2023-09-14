@@ -10,6 +10,9 @@ var gl;
 var nrOfLanes = 5;
 
 var colorTiles = [];
+var locPosition;
+var locColor;
+
 
 window.onload = function init() {
     canvas = document.getElementById( "gl-canvas" );
