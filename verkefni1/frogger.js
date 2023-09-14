@@ -67,13 +67,13 @@ function createBoxes() {
     let p3 = vec2(x0,-1+boxYSize*(i+1))
     vertices.push(p0,p1,p2,p3)
     if (i == 0 || i == totalSplits-1) { // upphafs og endapunktar
-        colors.push(vec4(1.0,1.0,1.0,1.0));
+        colorTiles.push(vec4(1.0,1.0,1.0,1.0));
     }
     else if (i == totalSplits) { // stigasvaedi
-      colors.push(vec4(0.0,1.0,1.0,1.0)); 
+      colorTiles.push(vec4(0.0,1.0,1.0,1.0)); 
     }
     else {  // akreinar
-      colors.push(vec4(0.0,0.0,1.0,1.0));
+      colorTiles.push(vec4(0.0,0.0,1.0,1.0));
     }
   }
   return vertices
