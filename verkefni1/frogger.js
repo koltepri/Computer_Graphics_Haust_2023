@@ -40,10 +40,13 @@ window.onload = function init() {
 
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
-    gl.bindBuffer( gl.ARRAY_BUFFER, bufferTiles);
-    gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
-    gl.uniform4fv( locColor, flatten(colorA) );
-    gl.drawArrays( gl.TRIANGLES, 0, 3 );
+
+    for(let i = 0; i < 8; i++) {
+      gl.bindBuffer( gl.ARRAY_BUFFER, bufferTiles);
+      gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
+      gl.uniform4fv( locColor, flatten(colorTiles[i]) );
+      gl.drawArrays( gl.TRIANGLE_FAN, i*16, 4*4);
+    }
 }
 
 function createBoxes(nrOfLanes) {
