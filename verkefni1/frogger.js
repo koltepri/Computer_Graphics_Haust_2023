@@ -116,7 +116,7 @@ class Car{
     this.position = this.initialCoordinates();
   }
   initialCoordinates() {
-    carVertices = [];
+    var coor = [];
     var boxYSize = 2/totalSplits;
     let padding = 0.1
     let rnd = 0.5*Math.random()*(Math.round(Math.random()) * 2 - 1); // [-0.5,0.5] : X
@@ -124,8 +124,8 @@ class Car{
     let p1 = vec2(rnd+sizeX,-1 + boxYSize*laneNr+padding);
     let p2 = vec2(rnd+sizeX,-1+boxYSize*(laneNr+1)-padding);
     let p3 = vec2(rnd,-1+boxYSize*(laneNr+1)-padding);
-    carVertices.push(p0,p1,p2,p3);
-    return carVertices;
+    coor.push(vec4(p0,p1,p2,p3));
+    return coor;
   }
 
 }
