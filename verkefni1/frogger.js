@@ -13,7 +13,7 @@ var locColor;
 
 var colorTiles = [];
 var bufferTiles;
-var cars;
+var cars = [];
 
 var nrOfLanes = 5;
 
