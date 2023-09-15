@@ -13,6 +13,8 @@ var colorTiles = [];
 var locPosition;
 var locColor;
 
+var bufferTiles;
+
 
 window.onload = function init() {
     // --- BoilerPlate
@@ -30,14 +32,14 @@ window.onload = function init() {
     // --- 
     var verticesTiles = createBoxes();
 
-    var bufferTiles = gl.createBuffer();
+    bufferTiles = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferTiles);
     gl.bufferData(gl.ARRAY_BUFFER,flatten(verticesTiles),gl.STATIC_DRAW);
 
     var vPosition = gl.getAttribLocation(program,"vPosition");
-    gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
+    //gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
     gl.enableVertexAttribArray(vPosition);
-
+    /*
     var bufferTilesColor = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, bufferTilesColor);
     gl.bufferData(gl.ARRAY_BUFFER, flatten(colorTiles),gl.STATIC_DRAW);
@@ -45,7 +47,8 @@ window.onload = function init() {
     var vColor = gl.getAttribLocation( program, "vColor" );
     gl.vertexAttribPointer( vColor, 4, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray(vColor);
-    
+    */
+    locColor = gl.getUniformLocation(program,"rcolor");
     render();
 
 }
@@ -54,10 +57,11 @@ window.onload = function init() {
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
     for(let i = 0; i < 3+nrOfLanes; i++) {
+      gl.bindBuffer(gl.ARRAY_BUFFER,bufferTiles);
+      gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
+      gl.uniform4fv(locColor,flatten(colorTiles[i]));
       gl.drawArrays( gl.TRIANGLE_FAN, i*4, 4);
     }
-    window.requestAnimFrame(render);
-
 }
 
 function createBoxes() {
