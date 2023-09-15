@@ -10,7 +10,7 @@ var gl;
 var nrOfLanes = 5;
 
 var colorTiles = [];
-var locPosition;
+var vPosition;
 var locColor;
 
 var bufferTiles;
@@ -36,7 +36,7 @@ window.onload = function init() {
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferTiles);
     gl.bufferData(gl.ARRAY_BUFFER,flatten(verticesTiles),gl.STATIC_DRAW);
 
-    var vPosition = gl.getAttribLocation(program,"vPosition");
+    vPosition = gl.getAttribLocation(program,"vPosition");
     //gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
     gl.enableVertexAttribArray(vPosition);
     /*
