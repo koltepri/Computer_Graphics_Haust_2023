@@ -41,13 +41,12 @@ window.onload = function init() {
     vPosition = gl.getAttribLocation(program,"vPosition");
     gl.enableVertexAttribArray(vPosition);
     
-    // -- Car Creation Code
-    var carsVertices = [];
-    bufferCars = gl.createBuffer();
+    cars = []
+    // -- Car Creation 
     for(let i = 0; i < nrOfLanes; i++) {
       let random_color = vec4(Math.random(),Math.random(),Math.random(),1.0)
       let car = new Car(0.2,random_color,0.05,i);
-      carVertices.push(car.getCarVertices());
+      cars.push(car);
     }
 
     locColor = gl.getUniformLocation(program,"rcolor");
@@ -65,8 +64,16 @@ function render() {
       gl.uniform4fv(locColor,flatten(colorTiles[i]));
       gl.drawArrays( gl.TRIANGLE_FAN, i*4, 4);
     }
+    bufferCars = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER,bufferCars);
+    gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
+    // hlytur ad vera villa herna
+    for(let i=0;, i < 3+nrOfLanes;i++){
+      gl.bufferData(gl.ARRAY_BUFFER,flatten(cars[i].position),gl.STATIC_DRAW);
+      gl.uniform4fv(locColor,flatten(cars[i].color));
+      gl.drawArrays(gl.TRIANGLE_FAN,0,4);
+    }
 
-    // -- Draw the Cars
      
     
 }
@@ -99,21 +106,22 @@ function createBoxes() {
 }
 
 class Car{
-  constructor(sizeX, color, speed, initial_position) {
-    this.sizeX = sizeX;
+  constructor(sizeX, color, speed, laneNr) {
+    this.sizeX = sizeX; // sizeX < 0.5
     this.color = color; // vec4
     this.speed = speed;
-    this.initial_position = initial_position; // 0<=i<=5 : hvada braut
+    this.laneNr = laneNr; // 0<=i<=5 : hvada braut
+    this.position = this.initialCoordinates();
   }
-  getCarVertices() {
+  initialCoordinates() {
     carVertices = [];
     var boxYSize = 2/totalSplits;
     let padding = 0.1
     let rnd = 0.5*Math.random()*(Math.round(Math.random()) * 2 - 1); // [-0.5,0.5] : X
-    let p0 = vec2(rnd,-1 + boxYSize*initial_position+padding);
-    let p1 = vec2(rnd+sizeX,-1 + boxYSize*initial_position+padding);
-    let p2 = vec2(rnd+sizeX,-1+boxYSize*(initial_position+1)-padding);
-    let p3 = vec2(rnd,-1+boxYSize*(initial_position+1)-padding);
+    let p0 = vec2(rnd,-1 + boxYSize*laneNr+padding);
+    let p1 = vec2(rnd+sizeX,-1 + boxYSize*laneNr+padding);
+    let p2 = vec2(rnd+sizeX,-1+boxYSize*(laneNr+1)-padding);
+    let p3 = vec2(rnd,-1+boxYSize*(laneNr+1)-padding);
     carVertices.push(p0,p1,p2,p3);
     return carVertices;
   }
