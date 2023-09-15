@@ -7,13 +7,16 @@
 /////////////////////////////////////////////////////////////////
 var canvas;
 var gl;
-var nrOfLanes = 5;
 
-var colorTiles = [];
 var vPosition;
 var locColor;
 
+var colorTiles = [];
 var bufferTiles;
+var cars;
+
+var nrOfLanes = 5;
+
 
 window.onload = function init() {
     // --- BoilerPlate Start
@@ -27,7 +30,8 @@ window.onload = function init() {
 
     var program = initShaders( gl, "vertex-shader", "fragment-shader" );
     gl.useProgram( program );
-    // ---  BoilerPlate End
+
+    // -- Map Creation Code
     var verticesTiles = createBoxes();
 
     bufferTiles = gl.createBuffer();
@@ -36,6 +40,16 @@ window.onload = function init() {
 
     vPosition = gl.getAttribLocation(program,"vPosition");
     gl.enableVertexAttribArray(vPosition);
+    
+    // -- Car Creation Code
+    var carsVertices = [];
+    bufferCars = gl.createBuffer();
+    for(let i = 0; i < nrOfLanes; i++) {
+      let random_color = vec4(Math.random(),Math.random(),Math.random(),1.0)
+      let car = new Car(0.2,random_color,0.05,i);
+      carVertices.push(car.getCarVertices());
+    }
+
     locColor = gl.getUniformLocation(program,"rcolor");
 
     render();
@@ -44,12 +58,17 @@ window.onload = function init() {
 
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
+    // -- Draw the Map
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferTiles);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
     for(let i = 0; i < 3+nrOfLanes; i++) {
       gl.uniform4fv(locColor,flatten(colorTiles[i]));
       gl.drawArrays( gl.TRIANGLE_FAN, i*4, 4);
     }
+
+    // -- Draw the Cars
+     
+    
 }
 
 function createBoxes() {
@@ -80,12 +99,25 @@ function createBoxes() {
 }
 
 class Car{
-  constructor(size, color, speed, position) {
-    this.size = size;
-    this.color = color;
+  constructor(sizeX, color, speed, initial_position) {
+    this.sizeX = sizeX;
+    this.color = color; // vec4
     this.speed = speed;
-    this.position = position;
+    this.initial_position = initial_position; // 0<=i<=5 : hvada braut
   }
+  getCarVertices() {
+    carVertices = [];
+    var boxYSize = 2/totalSplits;
+    let padding = 0.1
+    let rnd = 0.5*Math.random()*(Math.round(Math.random()) * 2 - 1); // [-0.5,0.5] : X
+    let p0 = vec2(rnd,-1 + boxYSize*initial_position+padding);
+    let p1 = vec2(rnd+sizeX,-1 + boxYSize*initial_position+padding);
+    let p2 = vec2(rnd+sizeX,-1+boxYSize*(initial_position+1)-padding);
+    let p3 = vec2(rnd,-1+boxYSize*(initial_position+1)-padding);
+    carVertices.push(p0,p1,p2,p3);
+    return carVertices;
+  }
+
 }
 
 
