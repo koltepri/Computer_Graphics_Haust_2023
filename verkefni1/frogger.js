@@ -41,7 +41,6 @@ window.onload = function init() {
     vPosition = gl.getAttribLocation(program,"vPosition");
     gl.enableVertexAttribArray(vPosition);
     
-    cars = []
     // -- Car Creation 
     for(let i = 0; i < nrOfLanes; i++) {
       let random_color = vec4(Math.random(),Math.random(),Math.random(),1.0)
@@ -64,17 +63,20 @@ function render() {
       gl.uniform4fv(locColor,flatten(colorTiles[i]));
       gl.drawArrays( gl.TRIANGLE_FAN, i*4, 4);
     }
+    // -- Initializing Car Buffer 
+    var carVertices = []
+    for(let i=0;, i < nrOfLanes;i++){
+      carVertices.push(cars[i].position);
+    }
     bufferCars = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferCars);
+    gl.bufferData(gl.ARRAY_BUFFER,flatten(carVertices),gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
-    // hlytur ad vera villa herna
-    for(let i=0;, i < 3+nrOfLanes;i++){
-      gl.bufferData(gl.ARRAY_BUFFER,flatten(cars[i].position),gl.STATIC_DRAW);
+    // -- Drawing the cars
+    for(let i=0;, i < nrOfLanes;i++){
       gl.uniform4fv(locColor,flatten(cars[i].color));
       gl.drawArrays(gl.TRIANGLE_FAN,0,4);
     }
-
-     
     
 }
 
