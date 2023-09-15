@@ -65,7 +65,7 @@ function render() {
     }
     // -- Initializing Car Buffer 
     var carVertices = []
-    for(let i=0;, i < nrOfLanes;i++){
+    for(let i=0; i < nrOfLanes;i++){
       carVertices.push(cars[i].position);
     }
     bufferCars = gl.createBuffer();
@@ -93,10 +93,10 @@ function createBoxes() {
     let p2 = vec2(x1,-1+boxYSize*(i+1))
     let p3 = vec2(x0,-1+boxYSize*(i+1))
     vertices.push(p0,p1,p2,p3)
-    if (i == 0 || i == totalSplits-1) { // upphafs og endapunktar
+    if (i == 0 || i == totalSplits-2) { // upphafs og endapunktar
       colorTiles.push(vec4(1.0,1.0,0.0,1.0));
     }
-    else if (i == totalSplits) { // stigasvaedi
+    else if (i == totalSplits-1) { // stigasvaedi
       colorTiles.push(vec4(0.0,1.0,1.0,1.0)); 
     }
     else {  // akreinar
