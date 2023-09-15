@@ -25,39 +25,28 @@ window.onload = function init() {
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 0.9, 0.9, 0.9, 1.0 );
 
-    //  Load shaders and initialize attribute buffers
     var program = initShaders( gl, "vertex-shader", "fragment-shader" );
     gl.useProgram( program );
     // ---  BoilerPlate End
     var verticesTiles = createBoxes();
 
     bufferTiles = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER,bufferTiles);
+    gl.bindBuffer(gl.ARRAY_BUFFER,bufferTiles); // is this neccessary 
     gl.bufferData(gl.ARRAY_BUFFER,flatten(verticesTiles),gl.STATIC_DRAW);
 
     vPosition = gl.getAttribLocation(program,"vPosition");
-    //gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
     gl.enableVertexAttribArray(vPosition);
-    /*
-    var bufferTilesColor = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, bufferTilesColor);
-    gl.bufferData(gl.ARRAY_BUFFER, flatten(colorTiles),gl.STATIC_DRAW);
-
-    var vColor = gl.getAttribLocation( program, "vColor" );
-    gl.vertexAttribPointer( vColor, 4, gl.FLOAT, false, 0, 0 );
-    gl.enableVertexAttribArray(vColor);
-    */
     locColor = gl.getUniformLocation(program,"rcolor");
-    render();
 
+    render();
 }
 
 
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
+    gl.bindBuffer(gl.ARRAY_BUFFER,bufferTiles);
+    gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
     for(let i = 0; i < 3+nrOfLanes; i++) {
-      gl.bindBuffer(gl.ARRAY_BUFFER,bufferTiles);
-      gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
       gl.uniform4fv(locColor,flatten(colorTiles[i]));
       gl.drawArrays( gl.TRIANGLE_FAN, i*4, 4);
     }
@@ -65,7 +54,7 @@ function render() {
 
 function createBoxes() {
   var totalSplits = 3 + nrOfLanes;
-  var boxYSize = 1/totalSplits;
+  var boxYSize = 2/totalSplits;
   var vertices = [];
   var colors = [];
   var x0 = -1.0,
@@ -83,13 +72,21 @@ function createBoxes() {
       colorTiles.push(vec4(0.0,1.0,1.0,1.0)); 
     }
     else {  // akreinar
-      var rnd = Math.random()/5
-      colorTiles.push(vec4(0.0+rnd,0.0+rnd,1.0+rnd,1.0));
+      var rnd = Math.random()/3
+      colorTiles.push(vec4(0.0+rnd,0.0+rnd,1.0-rnd,1.0));
     }
   }
   return vertices
 }
 
+class Car{
+  constructor(size, color, speed, position) {
+    this.size = size;
+    this.color = color;
+    this.speed = speed;
+    this.position = position;
+  }
+}
 
 
 
