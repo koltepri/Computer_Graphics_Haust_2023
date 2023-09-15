@@ -117,7 +117,7 @@ class Car{
   }
   initialCoordinates() {
     var coor = [];
-    var boxYSize = 2/totalSplits;
+    var boxYSize = 2/(3+nrOfLanes);
     let padding = 0.1
     let rnd = 0.5*Math.random()*(Math.round(Math.random()) * 2 - 1); // [-0.5,0.5] : X
     let p0 = vec2(rnd,-1 + boxYSize*laneNr+padding);
