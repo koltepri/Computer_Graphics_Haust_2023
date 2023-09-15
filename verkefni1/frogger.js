@@ -15,21 +15,20 @@ var locColor;
 
 var bufferTiles;
 
-
 window.onload = function init() {
-    // --- BoilerPlate
+    // --- BoilerPlate Start
     canvas = document.getElementById( "gl-canvas" );
     
     gl = WebGLUtils.setupWebGL( canvas );
     if ( !gl ) { alert( "WebGL isn't available" ); }
     
     gl.viewport( 0, 0, canvas.width, canvas.height );
-    gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
+    gl.clearColor( 0.9, 0.9, 0.9, 1.0 );
 
     //  Load shaders and initialize attribute buffers
     var program = initShaders( gl, "vertex-shader", "fragment-shader" );
     gl.useProgram( program );
-    // --- 
+    // ---  BoilerPlate End
     var verticesTiles = createBoxes();
 
     bufferTiles = gl.createBuffer();
@@ -84,7 +83,8 @@ function createBoxes() {
       colorTiles.push(vec4(0.0,1.0,1.0,1.0)); 
     }
     else {  // akreinar
-      colorTiles.push(vec4(0.0,0.0,1.0,1.0));
+      var rnd = Math.random()/5
+      colorTiles.push(vec4(0.0+rnd,0.0+rnd,1.0+rnd,1.0));
     }
   }
   return vertices
