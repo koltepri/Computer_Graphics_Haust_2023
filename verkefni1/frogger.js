@@ -73,7 +73,7 @@ function render() {
     gl.bufferData(gl.ARRAY_BUFFER,flatten(carVertices),gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
     // -- Drawing the cars
-    for(let i=0;, i < nrOfLanes;i++){
+    for(let i=0; i < nrOfLanes;i++){
       gl.uniform4fv(locColor,flatten(cars[i].color));
       gl.drawArrays(gl.TRIANGLE_FAN,0,4);
     }
