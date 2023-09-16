@@ -181,22 +181,22 @@ class Player {
     if (direction = Direction.UP) {
       this.position = [this.position[0]+1,this.position[1]];
       this.currentVertices = this.triangleVerticesFromCoordinate(
-        this.position[0],this.position[1]);
+        this.position[0],this.position[1],direction);
     } 
     else if (direction = Direction.RIGHT) {
       this.position = [this.position[0],this.position[1]+1];
       this.currentVertices = this.triangleVerticesFromCoordinate(
-        this.position[0],this.position[1]);
+        this.position[0],this.position[1],direction);
     } 
     else if (direction = Direction.LEFT) {
       this.position = [this.position[0]-1,this.position[1]];
       this.currentVertices = this.triangleVerticesFromCoordinate(
-        this.position[0],this.position[1]);
+        this.position[0],this.position[1],direction);
     } 
     else if (direction = Direction.DOWN) {
       this.position = [this.position[0],this.position[1]-1]:
       this.currentVertices = triangleVerticesFromCoordinate(
-        this.position[0],this.position[1]);
+        this.position[0],this.position[1],direction);
     } 
     console.log(this.position)
   }
