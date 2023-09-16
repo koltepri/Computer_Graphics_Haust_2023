@@ -18,6 +18,7 @@ var player;
 
 var nrOfLanes = 5;
 var XSplit = 3; // X movement defined, good to have odd number
+var boxYSize = 2/totalSplits;
 
 
 window.onload = function init() {
@@ -89,12 +90,10 @@ function render() {
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
     gl.uniform4fv(locColor,flatten(vec4(0.5,0.5,0.5,1.0)));
     gl.drawArrays(gl.TRIANGLE,0,3);
-    
 }
 
 function createBoxes() {
   var totalSplits = 3 + nrOfLanes;
-  var boxYSize = 2/totalSplits;
   var vertices = [];
   var colors = [];
   var x0 = -1.0,
