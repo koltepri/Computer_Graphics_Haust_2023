@@ -16,7 +16,7 @@ var bufferTiles;
 var cars = [];
 
 var nrOfLanes = 5;
-var XSplit = 7; // X movement defined, good to have odd number
+var XSplit = 3; // X movement defined, good to have odd number
 
 
 window.onload = function init() {
@@ -143,10 +143,9 @@ class Player {
 
 function defineXCoordinates(x0,x1,coordinates,count){
   if (count == XSplit) {
-    return coordinates.sort((a,b) => a-b
-    coordinates.filter(
-      (value,index) => coordinates.indexOf(item) === index).sort(
-      (a,b) => a-b);
+    return coordinates.filter(
+              (value,index) => coordinates.indexOf(item) === index).sort(
+              (a,b) => a-b);
   let x = add(x0,x1);
   coordinates.push(x);
   return defineXCoordinates(x0,x,coordinates,count+1).concat(
