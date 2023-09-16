@@ -146,6 +146,7 @@ function defineXCoordinates(x0,x1,coordinates,count){
     return coordinates.filter(
               (value,index) => coordinates.indexOf(item) === index).sort(
               (a,b) => a-b);
+  }
   let x = add(x0,x1);
   coordinates.push(x);
   return defineXCoordinates(x0,x,coordinates,count+1).concat(
