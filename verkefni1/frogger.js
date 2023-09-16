@@ -243,8 +243,8 @@ function createGrid() {
     for (let j = 0; j < gridX.length; j++) { // row
       let p0 = vec2(gridX[j],gridY[i]);
       let p1 = vec2(gridX[j+1],gridY[i]);
-      let p2 = vec2(gridX[j+1],grid[i+1]);
-      let p3 = vec2(gridX[j],grid[i+1]);
+      let p2 = vec2(gridX[j+1],gridY[i+1]);
+      let p3 = vec2(gridX[j],gridY[i+1]);
       grid.push([p0,p1,p2,p3]);
     }
   }
