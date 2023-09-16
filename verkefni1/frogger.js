@@ -21,7 +21,7 @@ var totalSplits = 3 + nrOfLanes;
 var XSplit = 3; // X movement defined, iterations
 var boxYSize = 2/totalSplits;
 
-var grid = []; // vec 4 by vec2s, defines all rectangle tiles on the map
+var grid = []; 
 
 
 window.onload = function init() {
@@ -48,6 +48,7 @@ window.onload = function init() {
     gl.enableVertexAttribArray(vPosition);
     
     createGrid(); // ma etta?
+
     // -- Car Creation 
     for(let i = 1; i < nrOfLanes+1; i++) {
       //let random_color = vec4(Math.random(),Math.random(),Math.random(),1.0)
@@ -77,7 +78,6 @@ window.onload = function init() {
                 break;
         }
     } );
-
 
     render();
 }
@@ -238,9 +238,9 @@ function defineXCoordinates(x0,x1,coordinates,count){
 function createGrid() {
   let gridX = [...new Set(defineXCoordinates(-1,1,[],0))].sort((a,b) => a-b); 
   var gridY = [];
-  for(int i = 0; i < nrOfLanes+1;i++) { //column
+  for(let i = 0; i < nrOfLanes+1; i++) { //column
     gridY.push(boxYSize*i);
-    for (int j = 0; j < gridX.length; j++) { // row
+    for (let j = 0; j < gridX.length; j++) { // row
       let p0 = vec2(gridX[j],gridY[i]);
       let p1 = vec2(gridX[j+1],gridY[i]);
       let p2 = vec2(gridX[j+1],grid[i+1]);
