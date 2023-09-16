@@ -111,7 +111,7 @@ function render() {
     // -- Initializing Player Buffer --> Drawing Player
     bufferPlayer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferPlayer);
-    gl.bufferData(gl.ARRAY_BUFFER,flatten(player.position),gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER,flatten(player.currentVertices),gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
     gl.uniform4fv(locColor,flatten(vec4(0.5,0.5,0.5,1.0)));
     gl.drawArrays(gl.TRIANGLE,0,3); // ekki ad teiknaast???
