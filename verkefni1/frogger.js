@@ -161,14 +161,15 @@ class Player {
 
 function defineXCoordinates(x0,x1,coordinates,count){
   if (count == XSplit) {
+    console.log(coordinates);
     return coordinates.filter(
               (value,index) => coordinates.indexOf(item) === index).sort(
               (a,b) => a-b);
   }
-  let x = add(x0,x1);
-  coordinates.push(x);
-  return defineXCoordinates(x0,x,coordinates,count+1).concat(
-    defineXCoordinates(x,x1,coordinates,count+1));
+  let midpoint = add(x0,x1);
+  coordinates.push(midpoint);
+  return defineXCoordinates(x0,midpoint,coordinates,count+1).concat(
+    defineXCoordinates(midpoint,x1,coordinates,count+1));
 }
 
 
