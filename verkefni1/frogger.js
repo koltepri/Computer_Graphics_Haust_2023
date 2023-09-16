@@ -134,10 +134,20 @@ class Car{
 
 class Player {
   constructor(position) {
-    this.position = initialPosition();
+    this.position = this.initialPosition();
   }
   initialPosition() {
-
+    var grid = defineXCoordinates(-1,1,[],XSplit);
+    var XCoor = [];
+    var padding = 0.05;
+    for(let i = 0; i < grid.length-1; i++) {
+      XCoor.push(add(grid[i],grid[i+1]));
+    }
+    let middle = Math.floor(XCoor.length / 2);
+    let p0 = vec2(grid[middle]+padding,-1+padding);
+    let p1 = vec2(grid[middle]+1-padding,-1+padding);
+    let p2 = vec2(XCoor[middle],-1-padding+boxYSize);
+    return [p0,p1,p2];
   }
 }
 
