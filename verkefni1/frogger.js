@@ -21,6 +21,8 @@ var totalSplits = 3 + nrOfLanes;
 var XSplit = 3; // X movement defined, iterations
 var boxYSize = 2/totalSplits;
 
+var grid = []; // vec 4 by vec2s, defines all rectangle tiles on the map
+
 
 window.onload = function init() {
     // --- BoilerPlate Start
@@ -45,6 +47,7 @@ window.onload = function init() {
     vPosition = gl.getAttribLocation(program,"vPosition");
     gl.enableVertexAttribArray(vPosition);
     
+    createGrid(); // ma etta?
     // -- Car Creation 
     for(let i = 1; i < nrOfLanes+1; i++) {
       //let random_color = vec4(Math.random(),Math.random(),Math.random(),1.0)
@@ -54,7 +57,27 @@ window.onload = function init() {
     }
     player = new Player();
     
+    
     locColor = gl.getUniformLocation(program,"rcolor");
+
+    // -- Event listener for keyboard
+    window.addEventListener("keydown", function(e){
+        switch( e.keyCode ) {
+            case 37:	// vinstri ör
+                player.move(Direction.LEFT);
+                break;
+            case 39:	// hægri ör
+                player.move(Direction.RIGHT);
+                break;
+            case 38: // upp
+                player.move(Direction.UP);
+                break;
+            case 40: // nidur
+                player.move(Direction.DOWN);
+                break;
+        }
+    } );
+
 
     render();
 }
@@ -79,18 +102,22 @@ function render() {
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferCars);
     gl.bufferData(gl.ARRAY_BUFFER,bufferData,gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
+
     // -- Drawing the cars
     for(let i=0; i < nrOfLanes;i++){
       gl.uniform4fv(locColor,flatten(cars[i].color));
       gl.drawArrays(gl.TRIANGLE_FAN,i*4,4);
     }
-    // -- Initializing Player Buffer-->Drawing Player
+    // -- Initializing Player Buffer --> Drawing Player
     bufferPlayer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferPlayer);
     gl.bufferData(gl.ARRAY_BUFFER,flatten(player.position),gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
     gl.uniform4fv(locColor,flatten(vec4(0.5,0.5,0.5,1.0)));
-    gl.drawArrays(gl.TRIANGLE,0,3);
+    gl.drawArrays(gl.TRIANGLE,0,3); // ekki ad teiknaast???
+
+    window.requestAnimFrame(render);
+
 }
 
 function createBoxes() {
@@ -142,29 +169,64 @@ class Car{
 
 class Player {
   constructor() {
-    this.position = this.initialPosition();
+    this.position = [0,3];
+    this.currentVertices = verticesFromCoordinates(0,3); // initial pos
   }
-  initialPosition() {
-    var grid = [...new Set(defineXCoordinates(-1,1,[],0))].sort((a,b) => a-b);
-    var XCoor = [];
-    var padding = 0.05;
-    for(let i = 0; i < grid.length-1; i++) {
-      XCoor.push(add(grid[i],grid[i+1]));
-    }
-    let middle = Math.floor(XCoor.length / 2);
-    let p0 = vec2(grid[middle]+padding,-1+padding);
-    let p1 = vec2(grid[middle]+1-padding,-1+padding);
-    let p2 = vec2(XCoor[middle],-1-padding+boxYSize);
-    return [p0,p1,p2];
+  move(direction) { 
+  // starting with instantanous moves, even if it trivializes the game
+  // eins og stendur ma bara ekki fara utaf... þarf ad baeta vid vesen logic
+    if (direction = Direction.UP) {
+      this.position = [this.position[0]+1,this.position[1]]
+      this.currentVertices = verticesFromCoordinates(this.position[0],this.position[1])
+    } 
+    else if (direction = Direction.RIGHT) {
+      this.position = [this.position[0],this.position[1]+1]
+      this.currentVertices = verticesFromCoordinates(this.position[0],this.position[1])
+    } 
+    else if (direction = Direction.LEFT) {
+      this.position = [this.position[0]-1,this.position[1]]
+      this.currentVertices = verticesFromCoordinates(this.position[0],this.position[1])
+    } 
+    else if (direction = Direction.DOWN) {
+      this.position = [this.position[0],this.position[1]-1]
+      this.currentVertices = verticesFromCoordinates(this.position[0],this.position[1])
+    } 
+  }
+  triangleVerticesFromCoordinate(i,j,direction) {
+    let rect = verticesFromCoordinates(i,j);
+    if (direction = Direction.UP) {
+      let p0 = rect[0];
+      let p1 = rect[1];
+      let p2 = add(rect[2],rect[3]);
+      return [p0,p1,p2]
+    } 
+    else if (direction = Direction.RIGHT) {
+      let p0 = rect[0];
+      let p1 = rect[3];
+      let p2 = add(rect[1],rect[2]);
+      return [p0,p1,p2]
+    } 
+    else if (direction = Direction.LEFT) {
+      let p0 = rect[1];
+      let p1 = rect[2];
+      let p2 = add(rect[0],rect[3]);
+      return [p0,p1,p2]
+    } 
+    else if (direction = Direction.DOWN) {
+      let p0 = rect[2];
+      let p1 = rect[3];
+      let p2 = add(rect[0],rect[1])
+      return [p0,p1,p2]
+    } 
   }
 }
 
 function defineXCoordinates(x0,x1,coordinates,count){
+  // hræðilega overengineered, hefði alveg matt gera þetta með höndunum.... 
   if (count == XSplit) {
     return coordinates;
   }
-  console.log(coordinates);
-  let midpoint = (x0+x1)/2
+  let midpoint = (x0+x1)/2;
   let leftCoordinates = [...coordinates]; 
   let rightCoordinates = [...coordinates]; 
   leftCoordinates.push(midpoint);
@@ -173,10 +235,31 @@ function defineXCoordinates(x0,x1,coordinates,count){
     defineXCoordinates(midpoint,x1,rightCoordinates,count+1));
 }
 
+function createGrid() {
+  let gridX = [...new Set(defineXCoordinates(-1,1,[],0))].sort((a,b) => a-b); 
+  var gridY = [];
+  for(int i = 0; i < nrOfLanes+1;i++) { //column
+    gridY.push(boxYSize*i);
+    for (int j = 0; j < gridX.length; j++) { // row
+      let p0 = vec2(gridX[j],gridY[i]);
+      let p1 = vec2(gridX[j+1],gridY[i]);
+      let p2 = vec2(gridX[j+1],grid[i+1]);
+      let p3 = vec2(gridX[j],grid[i+1]);
+      grid.push([p0,p1,p2,p3]);
+    }
+  }
+}
 
+function verticesFromCoordinates(i,j) { // row : column
+  let j_max = Math.pow(XSplit,2)-1; // 8
+  return grid[i*j_max+j+i] // skilar [p0,p1,p2,p3] fylki
+  // s.s ekki hægt að nesta vec4 og vec2 almennt
+}
 
-
-
-
-
+const Direction = { // direction enum
+  UP: 'up',
+  DOWN: 'down',
+  LEFT: 'left',
+  RIGHT: 'right',
+};
 
