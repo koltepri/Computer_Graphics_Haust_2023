@@ -66,7 +66,7 @@ function render() {
     // -- Initializing Car Buffer 
     var carVertices = []
     for(let i=0; i < nrOfLanes;i++){
-      carVertices.push(cars[i].position);
+      carVertices.push(flatten(cars[i].position));
     }
     bufferCars = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferCars);
