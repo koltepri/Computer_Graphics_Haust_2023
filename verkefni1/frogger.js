@@ -167,9 +167,12 @@ function defineXCoordinates(x0,x1,coordinates,count){
               (a,b) => a-b);
   }
   let midpoint = add(x0,x1);
-  coordinates.push(midpoint);
-  return defineXCoordinates(x0,midpoint,coordinates,count+1).concat(
-    defineXCoordinates(midpoint,x1,coordinates,count+1));
+  let leftCoordinates = [...coordinates]; 
+  let rightCoordinates = [...coordinates]; 
+  leftCoordinates.push(midpoint);
+  rightCoordinates.push(midpoint);
+  return defineXCoordinates(x0,midpoint,leftCoordinates,count+1).concat(
+    defineXCoordinates(midpoint,x1,rightCoordinates,count+1));
 }
 
 
