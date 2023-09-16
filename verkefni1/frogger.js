@@ -17,7 +17,8 @@ var cars = [];
 var player;
 
 var nrOfLanes = 5;
-var XSplit = 3; // X movement defined, good to have odd number
+var totalSplits = 3 + nrOfLanes;
+var XSplit = 3; // X movement defined, iterations
 var boxYSize = 2/totalSplits;
 
 
@@ -93,7 +94,6 @@ function render() {
 }
 
 function createBoxes() {
-  var totalSplits = 3 + nrOfLanes;
   var vertices = [];
   var colors = [];
   var x0 = -1.0,
