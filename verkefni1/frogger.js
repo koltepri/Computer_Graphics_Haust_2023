@@ -14,7 +14,7 @@ var locColor;
 var colorTiles = [];
 var bufferTiles;
 var cars = [];
-var player = new Player();
+var player;
 
 var nrOfLanes = 5;
 var XSplit = 3; // X movement defined, good to have odd number
@@ -50,6 +50,7 @@ window.onload = function init() {
       let car = new Car(0.2,random_color,0.05,i);
       cars.push(car);
     }
+    player = new Player();
     
     locColor = gl.getUniformLocation(program,"rcolor");
 
