@@ -194,7 +194,7 @@ class Player {
         this.position[0],this.position[1],direction);
     } 
     else if (direction = Direction.DOWN) {
-      this.position = [this.position[0],this.position[1]-1]:
+      this.position = [this.position[0],this.position[1]-1];
       this.currentVertices = triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
     } 
