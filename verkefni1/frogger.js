@@ -115,8 +115,8 @@ function render() {
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferPlayer);
     gl.bufferData(gl.ARRAY_BUFFER,flatten(player.currentVertices),gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
-    gl.uniform4fv(locColor,flatten(vec4(0.5,0.5,0.5,1.0)));
-    gl.drawArrays(gl.TRIANGLES,0,3); // ekki ad teiknaast???
+    gl.uniform4fv(locColor,flatten(vec4(1.0,0.0,0.0,1.0));
+    gl.drawArrays(gl.TRIANGLES,0,3);
 
     window.requestAnimFrame(render);
 
@@ -172,8 +172,8 @@ class Car{
 
 class Player {
   constructor() {
-    this.position = [0,3];
-    this.currentVertices = this.triangleVerticesFromCoordinate(0,3,Direction.UP); 
+    this.position = [1,3]; // breyta 1->0 seinns
+    this.currentVertices = this.triangleVerticesFromCoordinate(1,3,Direction.UP); 
   }
   move(direction) { 
   // starting with instantanous moves, even if it trivializes the game
@@ -205,25 +205,25 @@ class Player {
       let p0 = rect[0];
       let p1 = rect[1];
       let p2 = add(rect[2],rect[3]);
-      return [p0,p1,p2]
+      return [p0,p1,p2];
     } 
     else if (direction = Direction.RIGHT) {
       let p0 = rect[0];
       let p1 = rect[3];
       let p2 = add(rect[1],rect[2]);
-      return [p0,p1,p2]
+      return [p0,p1,p2];
     } 
     else if (direction = Direction.LEFT) {
       let p0 = rect[1];
       let p1 = rect[2];
       let p2 = add(rect[0],rect[3]);
-      return [p0,p1,p2]
+      return [p0,p1,p2];
     } 
     else if (direction = Direction.DOWN) {
       let p0 = rect[2];
       let p1 = rect[3];
       let p2 = add(rect[0],rect[1])
-      return [p0,p1,p2]
+      return [p0,p1,p2];
     } 
   }
 }
