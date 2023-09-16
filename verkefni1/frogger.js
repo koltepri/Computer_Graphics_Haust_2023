@@ -172,8 +172,8 @@ class Car{
 
 class Player {
   constructor() {
-    this.position = [1,3]; // breyta 1->0 seinns
-    this.currentVertices = this.triangleVerticesFromCoordinate(1,3,Direction.UP); 
+    this.position = [0,4]; // breyta 1->0 seinns
+    this.currentVertices = this.triangleVerticesFromCoordinate(0,4,Direction.UP); 
   }
   move(direction) { 
   // starting with instantanous moves, even if it trivializes the game
@@ -194,10 +194,11 @@ class Player {
         this.position[0],this.position[1]);
     } 
     else if (direction = Direction.DOWN) {
-      this.position = [this.position[0],this.position[1]-1]
+      this.position = [this.position[0],this.position[1]-1]:
       this.currentVertices = triangleVerticesFromCoordinate(
         this.position[0],this.position[1]);
     } 
+    console.log(this.position)
   }
   triangleVerticesFromCoordinate(i,j,direction) {
     let rect = verticesFromCoordinates(i,j);
@@ -258,7 +259,7 @@ function createGrid() {
 }
 
 function verticesFromCoordinates(i,j) { // row : column
-  let j_max = Math.pow(XSplit,2)-1; // 8
+  let j_max = Math.pow(XSplit,2)-2; // 7
   return grid[i*j_max+j+i] // skilar [p0,p1,p2,p3] fylki
   // s.s ekki hægt að nesta vec4 og vec2 almennt
 }
