@@ -76,6 +76,8 @@ window.onload = function init() {
             case 40: // nidur
                 player.move(Direction.DOWN);
                 break;
+            default:
+                break;
         }
     } );
 
@@ -114,9 +116,9 @@ function render() {
     gl.bufferData(gl.ARRAY_BUFFER,flatten(player.currentVertices),gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
     gl.uniform4fv(locColor,flatten(vec4(0.5,0.5,0.5,1.0)));
-    gl.drawArrays(gl.TRIANGLE,0,3); // ekki ad teiknaast???
+    gl.drawArrays(gl.TRIANGLES,0,3); // ekki ad teiknaast???
 
-    //window.requestAnimFrame(render);
+    window.requestAnimFrame(render);
 
 }
 
