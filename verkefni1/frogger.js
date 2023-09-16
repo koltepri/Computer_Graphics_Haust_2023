@@ -240,7 +240,7 @@ function createGrid() {
   var gridY = [];
   for(let i = 0; i < nrOfLanes+1; i++) {gridY.push(-1+boxYSize*i);}
   for(let i = 0; i < nrOfLanes+1; i++) { //column
-    for (let j = 0; j < gridX.length; j++) { // row
+    for (let j = 0; j < gridX.length-1; j++) { // row
       let p0 = vec2(gridX[j],gridY[i]);
       let p1 = vec2(gridX[j+1],gridY[i]);
       let p2 = vec2(gridX[j+1],gridY[i+1]);
