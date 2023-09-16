@@ -130,9 +130,9 @@ function createBoxes() {
   for(let i = 0; i < totalSplits; i++) {
     let p0 = vec2(x0,-1 + boxYSize*i);
     let p1 = vec2(x1,-1+boxYSize*i);
-    let p2 = vec2(x1,-1+boxYSize*(i+1))
-    let p3 = vec2(x0,-1+boxYSize*(i+1))
-    vertices.push(p0,p1,p2,p3)
+    let p2 = vec2(x1,-1+boxYSize*(i+1));
+    let p3 = vec2(x0,-1+boxYSize*(i+1));
+    vertices.push(p0,p1,p2,p3);
     if (i == 0 || i == totalSplits-2) { // upphafs og endapunktar
       colorTiles.push(vec4(1.0,1.0,0.0,1.0));
     }
@@ -140,11 +140,11 @@ function createBoxes() {
       colorTiles.push(vec4(0.0,1.0,1.0,1.0)); 
     }
     else {  // akreinar
-      var rnd = Math.random()/3
+      var rnd = Math.random()/3;
       colorTiles.push(vec4(0.0+rnd,0.0+rnd,1.0-rnd,1.0));
     }
   }
-  return vertices
+  return vertices;
 }
 
 class Car{
@@ -204,25 +204,25 @@ class Player {
     if (direction = Direction.UP) {
       let p0 = rect[0];
       let p1 = rect[1];
-      let p2 = add(rect[2],rect[3]);
+      let p2 = mix(rect[2],rect[3]);
       return [p0,p1,p2];
     } 
     else if (direction = Direction.RIGHT) {
       let p0 = rect[0];
       let p1 = rect[3];
-      let p2 = add(rect[1],rect[2]);
+      let p2 = mix(rect[1],rect[2]);
       return [p0,p1,p2];
     } 
     else if (direction = Direction.LEFT) {
       let p0 = rect[1];
       let p1 = rect[2];
-      let p2 = add(rect[0],rect[3]);
+      let p2 = mix(rect[0],rect[3]);
       return [p0,p1,p2];
     } 
     else if (direction = Direction.DOWN) {
       let p0 = rect[2];
       let p1 = rect[3];
-      let p2 = add(rect[0],rect[1])
+      let p2 = mix(rect[0],rect[1])
       return [p0,p1,p2];
     } 
   }
