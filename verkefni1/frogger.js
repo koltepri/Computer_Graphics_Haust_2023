@@ -43,7 +43,8 @@ window.onload = function init() {
     
     // -- Car Creation 
     for(let i = 0; i < nrOfLanes; i++) {
-      let random_color = vec4(Math.random(),Math.random(),Math.random(),1.0)
+      //let random_color = vec4(Math.random(),Math.random(),Math.random(),1.0)
+      let random_color = vec4(0.0,0.0,0.0,1.0)
       let car = new Car(0.2,random_color,0.05,i);
       cars.push(car);
     }
@@ -75,7 +76,7 @@ function render() {
     // -- Drawing the cars
     for(let i=0; i < nrOfLanes;i++){
       gl.uniform4fv(locColor,flatten(cars[i].color));
-      gl.drawArrays(gl.TRIANGLE_FAN,0,4);
+      gl.drawArrays(gl.TRIANGLE_FAN,i*4,4);
     }
     
 }
