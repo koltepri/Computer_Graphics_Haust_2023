@@ -150,7 +150,6 @@ function defineXCoordinates(x0,x1,coordinates,count){
   coordinates.push(x);
   return defineXCoordinates(x0,x,coordinates,count+1).concat(
     defineXCoordinates(x,x1,coordinates,count+1));
-  )
 }
 
 
