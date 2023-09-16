@@ -239,7 +239,7 @@ function createGrid() {
   let gridX = [...new Set(defineXCoordinates(-1,1,[],0))].sort((a,b) => a-b); 
   var gridY = [];
   for(let i = 0; i < nrOfLanes+1; i++) { //column
-    gridY.push(boxYSize*i);
+    gridY.push(-1+boxYSize*i);
     for (let j = 0; j < gridX.length; j++) { // row
       let p0 = vec2(gridX[j],gridY[i]);
       let p1 = vec2(gridX[j+1],gridY[i]);
