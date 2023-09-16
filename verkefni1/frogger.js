@@ -116,7 +116,7 @@ function render() {
     gl.uniform4fv(locColor,flatten(vec4(0.5,0.5,0.5,1.0)));
     gl.drawArrays(gl.TRIANGLE,0,3); // ekki ad teiknaast???
 
-    window.requestAnimFrame(render);
+    //window.requestAnimFrame(render);
 
 }
 
