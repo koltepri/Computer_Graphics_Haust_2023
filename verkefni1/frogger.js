@@ -224,7 +224,7 @@ class Player {
 function defineXCoordinates(x0,x1,coordinates,count){
   // hræðilega overengineered, hefði alveg matt gera þetta með höndunum.... 
   if (count == XSplit) {
-    return coordinates;
+    return [-1,...coordinates,1];
   }
   let midpoint = (x0+x1)/2;
   let leftCoordinates = [...coordinates]; 
