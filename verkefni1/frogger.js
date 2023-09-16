@@ -145,7 +145,7 @@ class Player {
     this.position = this.initialPosition();
   }
   initialPosition() {
-    var grid = defineXCoordinates(-1,1,[],XSplit);
+    var grid = [...new Set(defineXCoordinates(-1,1,[],0))].sort((a,b) => a-b);
     var XCoor = [];
     var padding = 0.05;
     for(let i = 0; i < grid.length-1; i++) {
@@ -161,11 +161,9 @@ class Player {
 
 function defineXCoordinates(x0,x1,coordinates,count){
   if (count == XSplit) {
-    console.log(coordinates);
-    return coordinates.filter(
-              (value,index) => coordinates.indexOf(item) === index).sort(
-              (a,b) => a-b);
+    return coordinates;
   }
+  console.log(coordinates);
   let midpoint = add(x0,x1);
   let leftCoordinates = [...coordinates]; 
   let rightCoordinates = [...coordinates]; 
