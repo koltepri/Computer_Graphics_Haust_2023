@@ -14,6 +14,7 @@ var locColor;
 var colorTiles = [];
 var bufferTiles;
 var cars = [];
+var player = new Player();
 
 var nrOfLanes = 5;
 var XSplit = 3; // X movement defined, good to have odd number
@@ -49,7 +50,7 @@ window.onload = function init() {
       let car = new Car(0.2,random_color,0.05,i);
       cars.push(car);
     }
-
+    
     locColor = gl.getUniformLocation(program,"rcolor");
 
     render();
@@ -80,6 +81,13 @@ function render() {
       gl.uniform4fv(locColor,flatten(cars[i].color));
       gl.drawArrays(gl.TRIANGLE_FAN,i*4,4);
     }
+    // -- Initializing Player Buffer-->Drawing Player
+    bufferPlayer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER,bufferPlayer);
+    gl.bufferData(gl.ARRAY_BUFFER,flatten(player.position),gl.STATIC_DRAW);
+    gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
+    gl.uniform4fv(locColor,flatten(vec4(0.5,0.5,0.5,1.0)));
+    gl.drawArrays(gl.TRIANGLE,0,3);
     
 }
 
@@ -133,7 +141,7 @@ class Car{
 }
 
 class Player {
-  constructor(position) {
+  constructor() {
     this.position = this.initialPosition();
   }
   initialPosition() {
