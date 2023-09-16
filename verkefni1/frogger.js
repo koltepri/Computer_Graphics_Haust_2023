@@ -164,7 +164,7 @@ function defineXCoordinates(x0,x1,coordinates,count){
     return coordinates;
   }
   console.log(coordinates);
-  let midpoint = add(x0,x1);
+  let midpoint = (x0+x1)/2
   let leftCoordinates = [...coordinates]; 
   let rightCoordinates = [...coordinates]; 
   leftCoordinates.push(midpoint);
