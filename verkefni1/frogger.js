@@ -69,6 +69,7 @@ function render() {
     for(let i=0; i < nrOfLanes;i++){
       carVertices.push(cars[i].position);
     }
+    let bufferData = new Float32Array(carVertices.flat(Infinity));
     bufferCars = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferCars);
     gl.bufferData(gl.ARRAY_BUFFER,carVertices.flat(Infinity),gl.STATIC_DRAW);
