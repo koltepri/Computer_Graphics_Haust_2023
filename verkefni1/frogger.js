@@ -115,7 +115,7 @@ function render() {
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferPlayer);
     gl.bufferData(gl.ARRAY_BUFFER,flatten(player.currentVertices),gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
-    gl.uniform4fv(locColor,flatten(vec4(1.0,0.0,0.0,1.0));
+    gl.uniform4fv(locColor,flatten(vec4(1.0,0.0,0.0,1.0)));
     gl.drawArrays(gl.TRIANGLES,0,3);
 
     window.requestAnimFrame(render);
