@@ -42,7 +42,7 @@ window.onload = function init() {
     gl.enableVertexAttribArray(vPosition);
     
     // -- Car Creation 
-    for(let i = 0; i < nrOfLanes; i++) {
+    for(let i = 1; i < nrOfLanes+1; i++) {
       //let random_color = vec4(Math.random(),Math.random(),Math.random(),1.0)
       let random_color = vec4(0.0,0.0,0.0,1.0)
       let car = new Car(0.2,random_color,0.05,i);
@@ -120,7 +120,7 @@ class Car{
   initialCoordinates() {
     var coor = [];
     var boxYSize = 2/(3+nrOfLanes);
-    let padding = 0.1
+    let padding = 0.03;
     let rnd = 0.5*Math.random()*(Math.round(Math.random()) * 2 - 1); // [-0.5,0.5] : X
     let p0 = vec2(rnd,-1 + boxYSize*this.laneNr+padding);
     let p1 = vec2(rnd+this.sizeX,-1 + boxYSize*this.laneNr+padding);
