@@ -127,13 +127,14 @@ function render() {
 function createBoxes() {
   var vertices = [];
   var colors = [];
+  var padding = 0.002;
   var x0 = -1.0,
       x1 = 1.0
   for(let i = 0; i < totalSplits; i++) {
-    let p0 = vec2(x0,-1 + boxYSize*i);
-    let p1 = vec2(x1,-1+boxYSize*i);
-    let p2 = vec2(x1,-1+boxYSize*(i+1));
-    let p3 = vec2(x0,-1+boxYSize*(i+1));
+    let p0 = vec2(x0,-1 + boxYSize*i)+padding;
+    let p1 = vec2(x1,-1+boxYSize*i)+padding;
+    let p2 = vec2(x1,-1+boxYSize*(i+1))-padding;
+    let p3 = vec2(x0,-1+boxYSize*(i+1))-padding;
     vertices.push(p0,p1,p2,p3);
     if (i == 0 || i == totalSplits-2) { // upphafs og endapunktar
       colorTiles.push(vec4(1.0,1.0,0.0,1.0));
