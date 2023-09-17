@@ -239,6 +239,8 @@ class Player {
     }
   }
   triangleVerticesFromCoordinate(i,j,direction) {
+    score = 0;
+    score = 0;
     let rect = verticesFromCoordinates(i,j);
     let padding = 0.001;
     if (direction == Direction.UP) {
