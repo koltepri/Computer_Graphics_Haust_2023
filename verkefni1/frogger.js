@@ -168,6 +168,7 @@ class Car{
     let p1 = vec2(rnd+this.sizeX,-1 + boxYSize*this.laneNr+padding);
     let p2 = vec2(rnd+this.sizeX,-1+boxYSize*(this.laneNr+1)-padding);
     let p3 = vec2(rnd,-1+boxYSize*(this.laneNr+1)-padding);
+    console.log(rnd);
     coor.push(p0,p1,p2,p3);
     return coor;
   }
