@@ -144,7 +144,7 @@ function createBoxes() {
     }
     else {  // akreinar
       var rnd = Math.random()/3;
-      colorTiles.push(vec4(0.0+rnd,0.0+rnd,1.0-rnd,1.0));
+      colorTiles.push(0.5,0.5,0.5,1.0);
     }
   }
   return vertices;
@@ -177,7 +177,7 @@ class Car{
       let allX = this.position.map((value) => value[0]);
       if (allX.every((item) => item >= 1)) {
         this.position[0][0] -= 1.95;
-        this.position[3][0] -= 1.95;
+        this.position[3][0] -= 1.95-padding;
         this.position[1][0] = this.position[0][0] + this.sizeX;
         this.position[2][0] = this.position[0][0] + this.sizeX;
       }
