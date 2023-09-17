@@ -137,7 +137,7 @@ function createBoxes() {
     let p3 = vec2(x0,-1+boxYSize*(i+1))-padding;
     vertices.push(p0,p1,p2,p3);
     if (i == 0 || i == totalSplits-2) { // upphafs og endapunktar
-      colorTiles.push(vec4(1.0,1.0,0.0,1.0));
+      colorTiles.push(vec4(0.7,0.0,1.0,1.0));
     }
     else if (i == totalSplits-1) { // stigasvaedi
       colorTiles.push(vec4(0.0,1.0,1.0,1.0)); 
