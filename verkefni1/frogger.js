@@ -184,8 +184,8 @@ class Car{
       else if (allX.every((item) => item <= -1)) {
         this.position[2][0] += 1.95; 
         this.position[1][0] += 1.95; 
-        this.position[0][0] += this.position[2][0]-this.sizeX;
-        this.position[3][0] += this.position[2][0]-this.sizeX;
+        this.position[0][0] = this.position[2][0]-this.sizeX;
+        this.position[3][0] = this.position[2][0]-this.sizeX;
       }
       else {
       this.position[i][0]+=this.speed;
