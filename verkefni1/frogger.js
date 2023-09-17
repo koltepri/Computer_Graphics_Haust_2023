@@ -235,12 +235,12 @@ class Player {
       gameDirection = false;
     }
     else if(this.position[0] == 0 && gameDirection == false) {
+      score++;
+      console.log(score);
       gameDirection = true;
     }
   }
   triangleVerticesFromCoordinate(i,j,direction) {
-    score = 0;
-    score = 0;
     let rect = verticesFromCoordinates(i,j);
     let padding = 0.001;
     if (direction == Direction.UP) {
