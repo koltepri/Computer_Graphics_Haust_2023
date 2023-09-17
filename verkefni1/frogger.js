@@ -140,7 +140,7 @@ function createBoxes() {
       colorTiles.push(vec4(0.7,0.0,1.0,1.0));
     }
     else if (i == totalSplits-1) { // stigasvaedi
-      colorTiles.push(vec4(0.0,1.0,1.0,1.0)); 
+      colorTiles.push(vec4(0.0,0.0,0.0,1.0)); 
     }
     else {  // akreinar
       var rnd = Math.random()/3;
