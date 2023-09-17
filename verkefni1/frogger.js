@@ -53,7 +53,7 @@ window.onload = function init() {
     let carSpeeds = [-0.01,0.005,0.008,-0.005,0.003];
     for(let i = 1; i < nrOfLanes+1; i++) {
       let random_color = vec4(0.1*i,0.0,1-(0.1*i),1.0);
-      let car = new Car(0.2,random_color,carSpeeds[i],i);
+      let car = new Car(0.2,random_color,carSpeeds[i-1],i);
       cars.push(car);
     }
     player = new Player();
@@ -96,7 +96,7 @@ function render() {
     }
     // -- Initializing Car Buffer 
     var carVertices = []
-    for(let i=0; i < nrOfLanes;i++){
+    for(let i=0; i < cars.length;i++){
       cars[i].updateCoordinates();
       carVertices.push(cars[i].position);
     }
@@ -108,7 +108,7 @@ function render() {
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
 
     // -- Drawing the cars
-    for(let i=0; i < nrOfLanes;i++){
+    for(let i=0; i < cars.length;i++){
       gl.uniform4fv(locColor,flatten(cars[i].color));
       gl.drawArrays(gl.TRIANGLE_FAN,i*4,4);
     }
@@ -168,7 +168,6 @@ class Car{
     let p1 = vec2(rnd+this.sizeX,-1 + boxYSize*this.laneNr+padding);
     let p2 = vec2(rnd+this.sizeX,-1+boxYSize*(this.laneNr+1)-padding);
     let p3 = vec2(rnd,-1+boxYSize*(this.laneNr+1)-padding);
-    console.log(rnd);
     coor.push(p0,p1,p2,p3);
     return coor;
   }
@@ -189,7 +188,7 @@ class Car{
         this.position[3][0] = this.position[2][0]-this.sizeX;
       }
       else {
-      this.position[i][0]+=this.speed;
+        this.position[i][0]+=this.speed;
       }
     }
   }
