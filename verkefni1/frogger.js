@@ -105,7 +105,7 @@ function render() {
     bufferCars = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferCars);
     //gl.bufferData(gl.ARRAY_BUFFER,bufferData,gl.STATIC_DRAW);
-    gl.bufferSubData(gl.ARRAY_BUFFER,0,bufferCars);
+    gl.bufferSubData(gl.ARRAY_BUFFER,0,bufferData);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
 
     // -- Drawing the cars
