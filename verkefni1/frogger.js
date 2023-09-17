@@ -56,6 +56,8 @@ window.onload = function init() {
       let car = new Car(0.2,random_color,carSpeeds[i-1],i);
       cars.push(car);
     }
+    cars.push(new Car(0.2,vec4(0.6,0.0,0.4,1.0),0.006),2);
+    cars.push(new Car(0.2,vec4(0.7,0.0,0.3,1.0),-0.006),4);
     player = new Player();
     
     
