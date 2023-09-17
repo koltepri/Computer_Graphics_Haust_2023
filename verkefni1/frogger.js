@@ -293,7 +293,7 @@ function verticesFromCoordinates(i,j) { // row : column
 }
 function coordinatesToGrid(boxCoordinates,lane,orientation) {
   var row = [];
-  for(let i = 0; i < 8;i++) { // 7 kannski
+  for(let i = 0; i < 9;i++) { // 8 kannski
     row.push(grid[lane*i]);
   }
   row = row.map((value) => value[0][0]); // only x coordinates matter
@@ -308,9 +308,9 @@ function coordinatesToGrid(boxCoordinates,lane,orientation) {
       if (xCoor[1] > row[i][0] && xCoor[1] < row[i][1]) {
         return [lane,i];
       }
-      else return [0,0]
     }
   }
+  return [0,0]; // aetti aldrei ad gerast
 }
 function isCollision() {
   var carPositions = cars.map((value) => 
