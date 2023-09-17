@@ -97,12 +97,14 @@ function render() {
     // -- Initializing Car Buffer 
     var carVertices = []
     for(let i=0; i < nrOfLanes;i++){
+      cars[i].updateCoordinates();
       carVertices.push(cars[i].position);
     }
     let bufferData = new Float32Array(carVertices.flat(Infinity));
     bufferCars = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferCars);
-    gl.bufferData(gl.ARRAY_BUFFER,bufferData,gl.STATIC_DRAW);
+    //gl.bufferData(gl.ARRAY_BUFFER,bufferData,gl.STATIC_DRAW);
+    gl.bufferSubData(gl.ARRAY_BUFFER,bufferCars,gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
 
     // -- Drawing the cars
@@ -167,6 +169,11 @@ class Car{
     let p3 = vec2(rnd,-1+boxYSize*(this.laneNr+1)-padding);
     coor.push(p0,p1,p2,p3);
     return coor;
+  }
+  updateCoordinates() { // move function
+    for (let i = 0; i < 4;i++) {
+      this.position[i][1]+=this.speed;
+    }
   }
 }
 
