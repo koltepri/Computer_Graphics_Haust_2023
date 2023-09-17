@@ -52,6 +52,7 @@ window.onload = function init() {
     // -- Car Creation 
     for(let i = 1; i < nrOfLanes+1; i++) {
       //let random_color = vec4(Math.random(),Math.random(),Math.random(),1.0)
+      let carSpeed = [-0.]
       let random_color = vec4(0.0,0.0,0.0,1.0)
       let car = new Car(0.2,random_color,0.05,i);
       cars.push(car);
@@ -104,7 +105,7 @@ function render() {
     bufferCars = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER,bufferCars);
     //gl.bufferData(gl.ARRAY_BUFFER,bufferData,gl.STATIC_DRAW);
-    gl.bufferSubData(gl.ARRAY_BUFFER,bufferCars,gl.STATIC_DRAW);
+    gl.bufferSubData(gl.ARRAY_BUFFER,0,bufferCars);
     gl.vertexAttribPointer(vPosition,2,gl.FLOAT,false,0,0);
 
     // -- Drawing the cars
