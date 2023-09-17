@@ -171,18 +171,21 @@ class Car{
     coor.push(p0,p1,p2,p3);
     return coor;
   }
-  updateCoordinates() { // move function
+  updateCoordinates() { // move function, hef ekki timann  til ad teikna 2 kassa
     for (let i = 0; i < 4;i++) {
       let x = this.position[i][0];
-      if (x >= 1) {
-        this.position[i][0] -= 1.95;
-        this.position[0][0] = this.position[i][0]-this.sizeX; // p2 : fyrir utan bounds
-        this.position[3][0] = this.position[i][0]-this.sizeX;
+      let allX = this.position.map((value) => value[0]);
+      if (allX.every((item) => item >= 1)) {
+        this.position[0][0] -= 1.95;
+        this.position[3][0] -= 1.95;
+        this.position[1][0] = this.position[0][0] + this.sizeX;
+        this.position[2][0] = this.position[0][0] + this.sizeX;
       }
-      else if(x <= -1) {
-        this.position[i][0] += 1.95;
-        this.position[2][0] = this.position[i][0]-this.sizeX; // p2 : fyrir utan bounds
-        this.position[1][0] = this.position[i][0]-this.sizeX;
+      else if (allX.every((item) => item <= -1)) {
+        this.position[2][0] += 1.95; 
+        this.position[1][0] += 1.95; 
+        this.position[0][0] += this.position[2][0]-this.sizeX;
+        this.position[3][0] += this.position[2][0]-this.sizeX;
       }
       else {
       this.position[i][0]+=this.speed;
