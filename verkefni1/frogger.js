@@ -292,11 +292,7 @@ function verticesFromCoordinates(i,j) { // row : column
   // s.s ekki hægt að nesta vec4 og vec2 almennt
 }
 function coordinatesToGrid(boxCoordinates,lane,orientation) {
-  var row = [];
-  for(let i = 0; i < 9;i++) { // 8 kannski
-    row.push(grid[lane*i]);
-  }
-  row = row.map((value) => value[0][0]); // only x coordinates matter
+  let row = [-1.0,-0.75,-0.5,-0.25,0,0.25,0.5,0.75,1];
   var xCoor = boxCoordinates.map((value) => value[0]);
   for(let i = 0; i < row.length-1; i++) {
     if (orientation < 0) {
@@ -310,12 +306,14 @@ function coordinatesToGrid(boxCoordinates,lane,orientation) {
       }
     }
   }
+  console.log("[0,0]")
   return [0,0]; // aetti aldrei ad gerast
 }
 function isCollision() {
   var carPositions = cars.map((value) => 
     coordinatesToGrid(value.position,value.laneNr,value.speed));
   if (carPositions.some((item) => item == player.position)) {
+    console.log("collisionDetected!")
     return true;
   }
   else {return false;}
