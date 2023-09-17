@@ -313,7 +313,8 @@ function coordinatesToGrid(boxCoordinates,lane,orientation) {
 function isCollision() {
   var carPositions = cars.map((value) => 
     coordinatesToGrid(value.position,value.laneNr,value.speed));
-  if (carPositions.some((item) => item == player.position)) {
+  if (carPositions.some((item) => item[0] == player.position[0] && 
+      item[1] == player.position[1])) { // trui ekki ad js se [0,1]==[0,1] false
     console.log("collisionDetected!")
     return true;
   }
