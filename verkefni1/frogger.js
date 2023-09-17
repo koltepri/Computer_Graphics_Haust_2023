@@ -229,12 +229,12 @@ class Player {
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
     } 
-    if (this.position[0] == 6 || gameDirection == true) {
+    if (this.position[0] == 6 && gameDirection == true) {
       score++;
       console.log(score);
       gameDirection = false;
     }
-    else if(this.position[0] == 0 || gameDirection == false) {
+    else if(this.position[0] == 0 && gameDirection == false) {
       gameDirection = true;
     }
   }
@@ -324,6 +324,7 @@ function isCollision() {
     coordinatesToGrid(value.position,value.laneNr,value.speed));
   if (carPositions.some((item) => item[0] == player.position[0] && 
       item[1] == player.position[1])) { // trui ekki ad js se [0,1]==[0,1] false
+    gameDirection = true;
     return true;
   }
   else {return false;}
