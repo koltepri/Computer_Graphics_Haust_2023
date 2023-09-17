@@ -203,31 +203,28 @@ class Player {
   move(direction) { 
   // starting with instantanous moves, even if it trivializes the game
   // eins og stendur ma bara ekki fara utaf... þarf ad baeta vid vesen logic
-    if (direction == Direction.UP) {
-      if (this.position[0]+1 > 7) {break;}
+    if (this.position[0]+1 > 7 || this.position[1]+1 > 7 || 
+    this.position[1]-1 < 0 ||this.position[0]-1 < 0) {}
+    else if (direction == Direction.UP) {
       this.position = [this.position[0]+1,this.position[1]];
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
     } 
     else if (direction == Direction.RIGHT) {
-      if (this.position[1]+1 > 7) {break;}
       this.position = [this.position[0],this.position[1]+1];
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
     } 
     else if (direction == Direction.LEFT) {
-      if (this.position[1]-1 < 0) {break;}
       this.position = [this.position[0],this.position[1]-1];
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
     } 
     else if (direction == Direction.DOWN) {
-      if (this.position[0]-1 < 0) {break;}
       this.position = [this.position[0]-1,this.position[1]];
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
     } 
-    console.log(this.position)
   }
   triangleVerticesFromCoordinate(i,j,direction) {
     let rect = verticesFromCoordinates(i,j);
