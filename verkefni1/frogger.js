@@ -193,7 +193,7 @@ class Car{
         this.position[i][0]+=this.speed;
       }
     }
-    if (isCollision) {
+    if (isCollision()) {
       player.position == [0,4];
     }
   }
