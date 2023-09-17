@@ -51,7 +51,7 @@ window.onload = function init() {
 
     // -- Car Creation 
     let carSpeeds = [-0.01,0.005,0.008,-0.005,0.003];
-    for(let i = 1; i < nrOfLanes+1; i++) {
+    for(let i = 0; i < nrOfLanes; i++) {
       //let random_color = vec4(Math.random(),Math.random(),Math.random(),1.0)
       let random_color = vec4(0.0,0.0,0.0,1.0);
       let car = new Car(0.2,random_color,carSpeeds[i],i);
