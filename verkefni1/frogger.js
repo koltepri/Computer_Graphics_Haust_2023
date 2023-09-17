@@ -194,8 +194,9 @@ class Car{
       }
     }
     if (isCollision()) {
-      player.position == [0,4];
-      player.currentVertices = triangleVerticesFromCoordinate(0,4,Direction.UP);
+      console.log("collisionDetected");
+      player.position = [0,4];
+      player.currentVertices = player.triangleVerticesFromCoordinate(0,4,Direction.UP);
     }
   }
 }
