@@ -296,7 +296,7 @@ function coordinatesToGrid(boxCoordinates,lane,orientation) {
   for(let i = 0; i < 8;i++) { // 7 kannski
     row.push(grid[lane*i]);
   }
-  row = row.map((value) => value[0]); // only x coordinates matter
+  row = row.map((value) => value[0][0]); // only x coordinates matter
   var xCoor = boxCoordinates.map((value) => value[0]);
   for(let i = 0; i < row.length; i++) {
     if (orientation < 0) {
