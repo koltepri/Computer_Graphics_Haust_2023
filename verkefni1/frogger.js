@@ -20,6 +20,8 @@ var nrOfLanes = 5;
 var totalSplits = 3 + nrOfLanes;
 var XSplit = 3; // X movement defined, iterations
 var boxYSize = 2/totalSplits;
+var score = 0;
+var gameDirection = true;
 
 var grid = []; 
 
@@ -194,7 +196,6 @@ class Car{
       }
     }
     if (isCollision()) {
-      console.log("collisionDetected");
       player.position = [0,4];
       player.currentVertices = player.triangleVerticesFromCoordinate(0,4,Direction.UP);
     }
@@ -228,6 +229,14 @@ class Player {
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
     } 
+    if (this.position[0] == 6 || gameDirection == true) {
+      score++;
+      console.log(score;)
+      gameDirection = false;
+    }
+    else if(this.position[0] == 0 || gameDirection == false) {
+      gameDirection = true;
+    }
   }
   triangleVerticesFromCoordinate(i,j,direction) {
     let rect = verticesFromCoordinates(i,j);
@@ -307,7 +316,6 @@ function coordinatesToGrid(boxCoordinates,lane,orientation) {
       }
     }
   }
-  console.log("[0,0]")
   return [0,0]; // aetti aldrei ad gerast
 }
 function isCollision() {
@@ -315,7 +323,6 @@ function isCollision() {
     coordinatesToGrid(value.position,value.laneNr,value.speed));
   if (carPositions.some((item) => item[0] == player.position[0] && 
       item[1] == player.position[1])) { // trui ekki ad js se [0,1]==[0,1] false
-    console.log("collisionDetected!")
     return true;
   }
   else {return false;}
