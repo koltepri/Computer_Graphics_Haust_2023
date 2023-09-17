@@ -193,6 +193,9 @@ class Car{
         this.position[i][0]+=this.speed;
       }
     }
+    if (isCollision) {
+      player.position == [0,4];
+    }
   }
 }
 
@@ -203,12 +206,12 @@ class Player {
   }
   move(direction) { 
   // starting with instantanous moves, even if it trivializes the game
-    if (direction == Direction.UP && !(this.position[0]+1 > 7)) {
+    if (direction == Direction.UP && !(this.position[0]+1 > 6)) {
       this.position = [this.position[0]+1,this.position[1]];
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
     } 
-    else if (direction == Direction.RIGHT && !(this.position[1]+1 > 7)) {
+    else if (direction == Direction.RIGHT && !(this.position[1]+1 > 6)) {
       this.position = [this.position[0],this.position[1]+1];
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
@@ -286,6 +289,35 @@ function verticesFromCoordinates(i,j) { // row : column
   let j_max = Math.pow(XSplit,2)-2; // 7
   return grid[i*j_max+j+i] // skilar [p0,p1,p2,p3] fylki
   // s.s ekki hægt að nesta vec4 og vec2 almennt
+}
+function coordinatesToGrid(boxCoordinates,lane,orientation) {
+  var row = [];
+  for(let i = 0; i < 8;i++) { // 7 kannski
+    row.push(grid[lane*i]);
+  }
+  row = row.map((value) => value[0]); // only x coordinates matter
+  var xCoor = boxCoordinates.map((value) => value[0]);
+  for(let i = 0; i < row.length; i++) {
+    if (orientation < 0) {
+      if (xCoor[0] < row[i][1] && xCoor[0] > row[i][1]) {
+        return [lane,i];
+      }
+    }
+    else {
+      if (xCoor[1] > row[i][0] && xCoor[1] < row[i][1]) {
+        return [lane,i];
+      }
+      else return [0,0]
+    }
+  }
+}
+function isCollision() {
+  var carPositions = cars.map((value) => 
+    coordinatesToGrid(value.position,value.laneNr,value.speed));
+  if (carPositions.any((item) => item == player.position)) {
+    return True;
+  }
+  else {return False;}
 }
 
 const Direction = { // direction enum
