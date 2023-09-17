@@ -298,14 +298,14 @@ function coordinatesToGrid(boxCoordinates,lane,orientation) {
   }
   row = row.map((value) => value[0][0]); // only x coordinates matter
   var xCoor = boxCoordinates.map((value) => value[0]);
-  for(let i = 0; i < row.length; i++) {
+  for(let i = 0; i < row.length-1; i++) {
     if (orientation < 0) {
-      if (xCoor[0] < row[1] && xCoor[0] > row[1]) {
+      if (xCoor[0] < row[i+1] && xCoor[0] > row[i]) {
         return [lane,i];
       }
     }
     else {
-      if (xCoor[1] > row[0] && xCoor[1] < row[1]) {
+      if (xCoor[1] > row[i] && xCoor[1] < row[i+1]) {
         return [lane,i];
       }
     }
