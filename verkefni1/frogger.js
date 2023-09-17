@@ -131,10 +131,10 @@ function createBoxes() {
   var x0 = -1.0,
       x1 = 1.0
   for(let i = 0; i < totalSplits; i++) {
-    let p0 = vec2(x0,-1 + boxYSize*i)+padding;
-    let p1 = vec2(x1,-1+boxYSize*i)+padding;
-    let p2 = vec2(x1,-1+boxYSize*(i+1))-padding;
-    let p3 = vec2(x0,-1+boxYSize*(i+1))-padding;
+    let p0 = vec2(x0,-1 + boxYSize*i+padding);
+    let p1 = vec2(x1,-1+boxYSize*i+padding);
+    let p2 = vec2(x1,-1+boxYSize*(i+1)-padding);
+    let p3 = vec2(x0,-1+boxYSize*(i+1)-padding);
     vertices.push(p0,p1,p2,p3);
     if (i == 0 || i == totalSplits-2) { // upphafs og endapunktar
       colorTiles.push(vec4(0.7,0.0,1.0,1.0));
@@ -204,21 +204,25 @@ class Player {
   // starting with instantanous moves, even if it trivializes the game
   // eins og stendur ma bara ekki fara utaf... þarf ad baeta vid vesen logic
     if (direction == Direction.UP) {
+      if (this.position[0]+1 > 7) {break;}
       this.position = [this.position[0]+1,this.position[1]];
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
     } 
     else if (direction == Direction.RIGHT) {
+      if (this.position[1]+1 > 7) {break;}
       this.position = [this.position[0],this.position[1]+1];
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
     } 
     else if (direction == Direction.LEFT) {
+      if (this.position[1]-1 < 0) {break;}
       this.position = [this.position[0],this.position[1]-1];
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
     } 
     else if (direction == Direction.DOWN) {
+      if (this.position[0]-1 < 0) {break;}
       this.position = [this.position[0]-1,this.position[1]];
       this.currentVertices = this.triangleVerticesFromCoordinate(
         this.position[0],this.position[1],direction);
