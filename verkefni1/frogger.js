@@ -173,11 +173,16 @@ class Car{
   }
   updateCoordinates() { // move function
     for (let i = 0; i < 4;i++) {
-      if (this.position[i][0] >= 1) {
+      let x = this.position[i][0];
+      if (x >= 1) {
         this.position[i][0] -= 1.95;
+        this.position[0][0] = this.position[i][0]-this.sizeX; // p2 : fyrir utan bounds
+        this.position[3][0] = this.position[i][0]-this.sizeX;
       }
-      else if(this.position[i][0] <= -1) {
+      else if(x <= -1) {
         this.position[i][0] += 1.95;
+        this.position[2][0] = this.position[i][0]-this.sizeX; // p2 : fyrir utan bounds
+        this.position[1][0] = this.position[i][0]-this.sizeX;
       }
       else {
       this.position[i][0]+=this.speed;
