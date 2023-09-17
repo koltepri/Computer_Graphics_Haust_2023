@@ -174,10 +174,10 @@ class Car{
   updateCoordinates() { // move function
     for (let i = 0; i < 4;i++) {
       if (this.position[i][0] >= 1) {
-        this.position[i][0] -= 2;
+        this.position[i][0] -= 1.95;
       }
       else if(this.position[i][0] <= -1) {
-        this.position[i][0] += 2;
+        this.position[i][0] += 1.95;
       }
       else {
       this.position[i][0]+=this.speed;
