@@ -202,25 +202,25 @@ class Player {
   }
   triangleVerticesFromCoordinate(i,j,direction) {
     let rect = verticesFromCoordinates(i,j);
-    if (direction = Direction.UP) {
+    if (direction == Direction.UP) {
       let p0 = rect[0];
       let p1 = rect[1];
       let p2 = mix(rect[2],rect[3],0.5);
       return [p0,p1,p2];
     } 
-    else if (direction = Direction.RIGHT) {
+    else if (direction == Direction.RIGHT) {
       let p0 = rect[0];
       let p1 = rect[3];
       let p2 = mix(rect[1],rect[2],0.5);
       return [p0,p1,p2];
     } 
-    else if (direction = Direction.LEFT) {
+    else if (direction == Direction.LEFT) {
       let p0 = rect[1];
       let p1 = rect[2];
       let p2 = mix(rect[0],rect[3],0.5);
       return [p0,p1,p2];
     } 
-    else if (direction = Direction.DOWN) {
+    else if (direction == Direction.DOWN) {
       let p0 = rect[2];
       let p1 = rect[3];
       let p2 = mix(rect[0],rect[1],0.5)
