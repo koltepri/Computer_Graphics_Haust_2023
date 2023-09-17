@@ -54,7 +54,7 @@ window.onload = function init() {
       //let random_color = vec4(Math.random(),Math.random(),Math.random(),1.0)
       //let carSpeed = [-0.]
       let random_color = vec4(0.0,0.0,0.0,1.0)
-      let car = new Car(0.2,random_color,0.05,i);
+      let car = new Car(0.2,random_color,0.005,i);
       cars.push(car);
     }
     player = new Player();
@@ -173,7 +173,7 @@ class Car{
   }
   updateCoordinates() { // move function
     for (let i = 0; i < 4;i++) {
-      this.position[i][1]+=this.speed;
+      this.position[i][0]+=this.speed;
     }
   }
 }
