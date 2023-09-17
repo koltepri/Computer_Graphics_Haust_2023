@@ -316,9 +316,9 @@ function isCollision() {
   var carPositions = cars.map((value) => 
     coordinatesToGrid(value.position,value.laneNr,value.speed));
   if (carPositions.some((item) => item == player.position)) {
-    return True;
+    return true;
   }
-  else {return False;}
+  else {return false;}
 }
 
 const Direction = { // direction enum
