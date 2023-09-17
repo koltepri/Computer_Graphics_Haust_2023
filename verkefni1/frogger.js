@@ -315,7 +315,7 @@ function coordinatesToGrid(boxCoordinates,lane,orientation) {
 function isCollision() {
   var carPositions = cars.map((value) => 
     coordinatesToGrid(value.position,value.laneNr,value.speed));
-  if (carPositions.any((item) => item == player.position)) {
+  if (carPositions.some((item) => item == player.position)) {
     return True;
   }
   else {return False;}
