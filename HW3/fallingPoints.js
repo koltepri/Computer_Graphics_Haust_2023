@@ -58,6 +58,6 @@ function render() {
     
     gl.drawArrays( gl.POINTS, 0, numPoints );
 
-    window.requestAnimFrame(render);
+    //window.requestAnimFrame(render);
 }
 
