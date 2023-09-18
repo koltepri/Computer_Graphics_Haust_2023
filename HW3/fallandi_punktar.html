@@ -32,7 +32,7 @@ void main()
     float pct = 0.0;
     float radius = 0.3;
     if (fragPosition.y > 0.5) {
-    	vec2 toCenter = vec2(0.5)-fragPosition.xy;
+    	vec2 toCenter = vec2(0.0)-fragPosition.xy; // midjan i 0,0?
     	pct = step(radius,length(toCenter));
       if (pct == 0.0) {
         color = vec3(1.0,0.0,0.0);
