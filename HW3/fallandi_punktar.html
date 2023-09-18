@@ -29,9 +29,10 @@ varying vec4 fragPosition;
 void main()
 {
     vec3 color;
+    float pct = 0.0;
     float radius = 0.3;
     if (fragPosition.y > 0.5) {
-    	vec2 toCenter = vec2(0.5)-fragPosition;
+    	vec2 toCenter = vec2(0.5)-fragPosition.xy;
     	pct = step(radius,length(toCenter));
       if (pct == 0.0) {
         color = (1.0,0.0,0.0);
