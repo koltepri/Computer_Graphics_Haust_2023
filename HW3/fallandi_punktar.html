@@ -35,14 +35,14 @@ void main()
     	vec2 toCenter = vec2(0.5)-fragPosition.xy;
     	pct = step(radius,length(toCenter));
       if (pct == 0.0) {
-        color = (1.0,0.0,0.0);
+        color = vec3(1.0,0.0,0.0);
       } 
     }
     else {
       vec2 toCenter = vec2(0.5)-fragPosition.xy;
-    	pct = 1.0-step(0.2,length(toCenter));
+    	pct = 1.0-step(radius,length(toCenter));
         if(pct == 0.0) {
-          color = (1.0,0.0,0.0);
+          color = vec3(1.0,0.0,0.0);
         }
     }
 
