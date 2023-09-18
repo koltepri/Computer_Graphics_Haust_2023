@@ -7,6 +7,9 @@
 var gl;
 var points;
 
+var u_time; // Variable to hold the location of the u_time uniform
+var time = 0.0; // Initial time value
+
 window.onload = function init()
 {
     var canvas = document.getElementById( "gl-canvas" );
@@ -37,14 +40,17 @@ window.onload = function init()
     gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
+    u_time = gl.getUniformLocation(program, "u_time");
+
     render();
 };
 
 
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
+    time += 0.01; // Adjust the increment as needed
+    gl.uniform1f(u_time, time);
     gl.drawArrays( gl.TRIANGLES, 0, 3 );
     window.requestAnimFrame(render);
-
 }
 
