@@ -39,7 +39,7 @@ void main()
       } 
     }
     else {
-      vec2 toCenter = vec2(0.5)-fragPosition;
+      vec2 toCenter = vec2(0.5)-fragPosition.xy;
     	pct = 1.0-step(0.2,length(toCenter));
         if(pct == 0.0) {
           color = (1.0,0.0,0.0);
