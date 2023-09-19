@@ -119,6 +119,20 @@ function render() {
   if (Math.abs(box[0] + dX) > maxX - boxRad) dX = -dX;
   if (Math.abs(box[1] + dY) > maxY - boxRad) dY = -dY;
 
+  var ballBoundingBox = {
+    minX: box[0] - boxRad,
+    maxX: box[0] + boxRad,
+    minY: box[1] - boxRad,
+    maxY: box[1] + boxRad 
+  };
+
+  var paddleBoundingBox = {
+    minX: verticesPad[0][0],
+    maxX: verticesPad[2][0],
+    minY: verticesPad[0][1],
+    maxY: verticesPad[2][1]
+  };
+
   if (
     ballBoundingBox.maxX > paddleBoundingBox.minX &&
     ballBoundingBox.minX < paddleBoundingBox.maxX &&
@@ -144,19 +158,5 @@ function render() {
 }
 
 // object detection code
-
-var ballBoundingBox = {
-    minX: box[0] - boxRad,
-    maxX: box[0] + boxRad,
-    minY: box[1] - boxRad,
-    maxY: box[1] + boxRad 
-};
-
-var paddleBoundingBox = {
-    minX: verticesPad[0][0],
-    maxX: verticesPad[2][0],
-    minY: verticesPad[0][1],
-    maxY: verticesPad[2][1]
-};
 
 
