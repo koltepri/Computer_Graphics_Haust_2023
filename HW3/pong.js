@@ -102,6 +102,7 @@ window.onload = function init() {
         for(i=0; i<4; i++) {
             verticesPad[i][0] += xmove;
         }
+        gl.bindBuffer(gl.ARRAY_BUFFER, bufferId2);
         gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(verticesPad));
     } );
     render();
