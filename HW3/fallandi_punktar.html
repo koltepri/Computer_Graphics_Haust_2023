@@ -34,14 +34,14 @@ void main()
     float radius = 0.3;
     if (screenPosition.y > 0.5) {
     	vec2 toCenter = vec2(0.5)-screenPosition.xy; // midjan i 0,0?
-    	pct = 1.0-step(radius,length(toCenter));
+    	pct = step(radius,length(toCenter));
       if (pct == 1.0) {
         color = vec3(1.0,0.0,0.0);
       } 
     }
     else {
       vec2 toCenter = vec2(0.5)-screenPosition.xy;
-    	pct = step(radius,length(toCenter));
+    	pct = 1.0-step(radius,length(toCenter));
         if(pct == 1.0) {
           color = vec3(1.0,0.0,0.0);
         }
