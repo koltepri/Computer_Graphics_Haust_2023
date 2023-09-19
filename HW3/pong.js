@@ -21,6 +21,7 @@ var vertices = new Float32Array([-0.05, -0.05, 0.05, -0.05, 0.05, 0.05, -0.05, 0
 
 // ---
 var verticesPad;
+var vPosition;
 
 window.onload = function init() {
 
@@ -48,7 +49,7 @@ window.onload = function init() {
     gl.bufferData( gl.ARRAY_BUFFER, flatten(vertices), gl.DYNAMIC_DRAW );
 
     // Associate out shader variables with our data buffer
-    var vPosition = gl.getAttribLocation( program, "vPosition" );
+    vPosition = gl.getAttribLocation( program, "vPosition" );
     gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
