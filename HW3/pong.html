@@ -10,11 +10,7 @@ void
 main()
 {
     vec4 t = vPosition;
-    
-    //t.xy += boxPos;
-    if (boxPos.xy != vec2(0.0,0.0)) {
-      t.xy += boxPos;
-    }
+    t.xy += boxPos;
     gl_Position = t;
 }
 </script>
