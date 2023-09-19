@@ -22,6 +22,7 @@ var vertices = new Float32Array([-0.05, -0.05, 0.05, -0.05, 0.05, 0.05, -0.05, 0
 // ---
 var verticesPad;
 var vPosition;
+var bufferId2;
 
 window.onload = function init() {
 
@@ -77,8 +78,8 @@ window.onload = function init() {
     ];
     
     // Load the data into the GPU
-    var bufferId = gl.createBuffer();
-    gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
+    bufferId2 = gl.createBuffer();
+    gl.bindBuffer( gl.ARRAY_BUFFER, bufferId2 );
     gl.bufferData( gl.ARRAY_BUFFER, flatten(verticesPad), gl.DYNAMIC_DRAW );
 
     // Associate out shader variables with our data buffer
@@ -109,7 +110,6 @@ function render() {
   gl.clear( gl.COLOR_BUFFER_BIT );
 
   // Drawing the paddle
-  bufferId2 = gl.createBuffer();
   gl.bindBuffer( gl.ARRAY_BUFFER, bufferId2 );
   gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
   gl.uniform2fv( locBox, flatten(vec2(0.0,0.0)));
