@@ -30,6 +30,8 @@ varying vec4 fragPosition;
 void main()
 {
   vec3 color = vec3(0.0,0.0,1.0);
+  // converting from [-1,1] coordinate system to [0,1]
+  vec2 screenPosition = (fragPosition.xy + 1.0) / 2.0; 
   if (fragPosition.x > 0.25 && fragPosition.x < 0.35) {
     color = vec3(1.0,0.0,0.0);
   }
