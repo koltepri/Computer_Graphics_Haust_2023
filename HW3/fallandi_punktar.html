@@ -30,19 +30,19 @@ void main()
 {
     vec3 color;
     vec2 screenPosition = (fragPosition.xy + 1.0) / 2.0; 
-    float pct = 0.0; // breyta tessu i eitthvaad sem syynir mer errors
+    float pct = 1.0; // breyta tessu i eitthvaad sem syynir mer errors
     float radius = 0.3;
     if (screenPosition.y > 0.5) {
     	vec2 toCenter = vec2(0.5)-screenPosition.xy; // midjan i 0,0?
-    	pct = step(radius,length(toCenter));
-      if (pct == 0.0) {
+    	pct = 1.0-step(radius,length(toCenter));
+      if (pct == 1.0) {
         color = vec3(1.0,0.0,0.0);
       } 
     }
     else {
       vec2 toCenter = vec2(0.5)-screenPosition.xy;
-    	pct = 1.0-step(radius,length(toCenter));
-        if(pct == 0.0) {
+    	pct = step(radius,length(toCenter));
+        if(pct == 1.0) {
           color = vec3(1.0,0.0,0.0);
         }
     }
