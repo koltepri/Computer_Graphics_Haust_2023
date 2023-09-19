@@ -38,12 +38,16 @@ void main()
       if (pct == 1.0) {
         color = vec3(1.0,0.0,0.0);
       } 
+      else color = vec3(1.0,1.0,1.0);
     }
     else {
       vec2 toCenter = vec2(0.5)-screenPosition.xy;
     	pct = 1.0-step(radius,length(toCenter));
         if(pct == 1.0) {
           color = vec3(1.0,0.0,0.0);
+        }
+        else {
+          color = vec3(1.0,1.0,1.0):
         }
     }
 
