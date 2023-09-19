@@ -20,7 +20,12 @@ var boxRad = 0.05;
 var vertices = new Float32Array([-0.05, -0.05, 0.05, -0.05, 0.05, 0.05, -0.05, 0.05]);
 
 // ---
-var verticesPad;
+var verticesPad = [
+        vec2( -0.1, -0.9 ),
+        vec2( -0.1, -0.86 ),
+        vec2(  0.1, -0.86 ),
+        vec2(  0.1, -0.9 ) 
+    ];
 var vPosition;
 var bufferId2;
 
@@ -70,12 +75,6 @@ window.onload = function init() {
         }
     } );
 
-    verticesPad = [
-        vec2( -0.1, -0.9 ),
-        vec2( -0.1, -0.86 ),
-        vec2(  0.1, -0.86 ),
-        vec2(  0.1, -0.9 ) 
-    ];
     
     // Load the data into the GPU
     bufferId2 = gl.createBuffer();
@@ -143,7 +142,6 @@ function render() {
 
   window.requestAnimFrame(render);
 }
-
 
 // object detection code
 
