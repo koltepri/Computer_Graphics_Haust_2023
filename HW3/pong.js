@@ -101,17 +101,14 @@ window.onload = function init() {
         for(i=0; i<4; i++) {
             verticesPad[i][0] += xmove;
         }
-
         gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(verticesPad));
     } );
     render();
 }
 function render() {
   gl.clear( gl.COLOR_BUFFER_BIT );
-  
-  // Drawing the pad
-  gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(verticesPad));
-  gl.drawArrays( gl.TRIANGLE_FAN, 0, 4 ); // error?
+  gl.uniform2fv( locBox, flatten(vec2(0.0,0.0)) );
+  gl.drawArrays( gl.TRIANGLE_FAN, 0, 4 ); 
     
   // Láta ferninginn skoppa af veggjunum
   if (Math.abs(box[0] + dX) > maxX - boxRad) dX = -dX;
