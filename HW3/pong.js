@@ -148,10 +148,10 @@ function render() {
 // object detection code
 
 var ballBoundingBox = {
-    minX: box[0] - ballRad,
-    maxX: box[0] + ballRad,
-    minY: box[1] - ballRad,
-    maxY: box[1] + ballRad
+    minX: box[0] - boxRad,
+    maxX: box[0] + boxRad,
+    minY: box[1] - boxRad,
+    maxY: box[1] + boxRad 
 };
 
 var paddleBoundingBox = {
