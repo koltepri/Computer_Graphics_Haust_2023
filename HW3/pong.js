@@ -68,7 +68,7 @@ window.onload = function init() {
         }
     } );
 
-    var verticesPad = [
+    verticesPad = [
         vec2( -0.1, -0.9 ),
         vec2( -0.1, -0.86 ),
         vec2(  0.1, -0.86 ),
