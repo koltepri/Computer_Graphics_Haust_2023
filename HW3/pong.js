@@ -111,7 +111,6 @@ function render() {
   // Drawing the paddle
   bufferId2 = gl.createBuffer();
   gl.bindBuffer( gl.ARRAY_BUFFER, bufferId2 );
-  gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(verticesPad));
   gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
   gl.uniform2fv( locBox, flatten(vec2(0.0,0.0)));
   gl.drawArrays( gl.TRIANGLE_FAN, 0, 4 ); 
