@@ -125,6 +125,7 @@ function render() {
   gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
   gl.uniform2fv( locBox, flatten(box) );
   gl.drawArrays( gl.TRIANGLE_FAN, 0, 4 );
+  gl.uniform2fv( locBox, flatten(vec2(0.0,0.0)));
 
   window.requestAnimFrame(render);
 }
