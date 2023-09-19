@@ -107,7 +107,7 @@ window.onload = function init() {
 }
 function render() {
   gl.clear( gl.COLOR_BUFFER_BIT );
-  gl.uniform2fv( locBox, flatten(vec2(0.0,0.0)) );
+  gl.uniform2fv( locBox, flatten(verticesPad)));
   gl.drawArrays( gl.TRIANGLE_FAN, 0, 4 ); 
     
   // Láta ferninginn skoppa af veggjunum
