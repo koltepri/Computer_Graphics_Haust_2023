@@ -120,6 +120,15 @@ function render() {
   if (Math.abs(box[0] + dX) > maxX - boxRad) dX = -dX;
   if (Math.abs(box[1] + dY) > maxY - boxRad) dY = -dY;
 
+  if (
+    ballBoundingBox.maxX > paddleBoundingBox.minX &&
+    ballBoundingBox.minX < paddleBoundingBox.maxX &&
+    ballBoundingBox.maxY > paddleBoundingBox.minY &&
+    ballBoundingBox.minY < paddleBoundingBox.maxY
+  ) {
+    dY = -dY; 
+  }
+
   // Uppfæra staðsetningu
   box[0] += dX;
   box[1] += dY;
@@ -134,3 +143,22 @@ function render() {
 
   window.requestAnimFrame(render);
 }
+
+
+// object detection code
+
+var ballBoundingBox = {
+    minX: box[0] - ballRad,
+    maxX: box[0] + ballRad,
+    minY: box[1] - ballRad,
+    maxY: box[1] + ballRad
+};
+
+var paddleBoundingBox = {
+    minX: verticesPad[0][0],
+    maxX: verticesPad[2][0],
+    minY: verticesPad[0][1],
+    maxY: verticesPad[2][1]
+};
+
+
