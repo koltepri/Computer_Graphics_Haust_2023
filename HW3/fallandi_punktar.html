@@ -29,6 +29,7 @@ varying vec4 fragPosition;
 void main()
 {
     vec3 color;
+    vec2 screenPosition = (fragPosition.xy + 1.0) / 2.0; 
     float pct = 0.0; // breyta tessu i eitthvaad sem syynir mer errors
     float radius = 0.3;
     if (fragPosition.y > 0.5) {
