@@ -32,10 +32,10 @@ void main()
   vec3 color = vec3(0.0,0.0,1.0);
   // converting from [-1,1] coordinate system to [0,1]
   vec2 screenPosition = (fragPosition.xy + 1.0) / 2.0; 
-  if (screenPosition.x > 0.75 && screenPosition.x < 0.65) {
+  if (screenPosition.x > 0.25 && screenPosition.x < 0.35) {
     color = vec3(1.0,0.0,0.0);
   }
-  else if (screenPosition.x > 0.80 && screenPosition.x < 0.6) {
+  else if (screenPosition.x > 0.20 && screenPosition.x < 0.4) {
     color = vec3(1.0,1.0,1.0);
   }
   else if (screenPosition.y > 0.45 && screenPosition.y < 0.55) {
