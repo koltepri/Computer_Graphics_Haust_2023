@@ -1,7 +1,7 @@
 var canvas;
 var gl;
 
-var NumVertices  = 24;
+var NumVertices  = 24*3;
 
 var points = [];
 var colors = []; // all black 
