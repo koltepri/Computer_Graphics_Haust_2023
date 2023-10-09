@@ -1,7 +1,7 @@
 var canvas;
 var gl;
 
-var NumVertices  = 24*3;
+var NumVertices  = 24;
 
 var points = [];
 var colors = []; // all black 
@@ -54,7 +54,7 @@ window.onload = function init()
     gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
 
     var vPosition = gl.getAttribLocation( program, "vPosition" );
-    gl.vertexAttribPointer( vPosition, 4, gl.FLOAT, false, 0, 0 );
+    gl.vertexAttribPointer( vPosition, 3, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
     matrixLoc = gl.getUniformLocation( program, "rotation" );
