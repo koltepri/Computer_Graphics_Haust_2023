@@ -125,7 +125,7 @@ function render()
     gl.uniformMatrix4fv(matrixLoc, false, flatten(mv));
 
     for( let i = 0; i < NumVertices; i++ ) {
-      gl.drawArrays( gl.LINE_LOOP, i*3, 3);
+      gl.drawArrays( gl.LINE_LOOP, i*4, 4);
     }
 
     requestAnimFrame( render );
