@@ -54,7 +54,7 @@ window.onload = function init()
     gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
 
     var vPosition = gl.getAttribLocation( program, "vPosition" );
-    gl.vertexAttribPointer( vPosition, 3, gl.FLOAT, false, 0, 0 );
+    gl.vertexAttribPointer( vPosition, 4, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
     matrixLoc = gl.getUniformLocation( program, "rotation" );
@@ -106,7 +106,7 @@ function quad(a, b, c, d)
         vec3(  0.5, -0.5, -0.5 ) //7
     ];
 
-    var indices = [ a, b, c, d];
+    var indices = [ a, b, c, d , a];
 
     for ( var i = 0; i < indices.length; ++i ) {
       points.push( vertices[indices[i]] );
