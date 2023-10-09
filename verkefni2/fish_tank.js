@@ -106,7 +106,7 @@ function quad(a, b, c, d)
         vec3(  0.5, -0.5, -0.5 ) //7
     ];
 
-    var indices = [ a, b, c, d , a];
+    var indices = [ a, b, c, d];
 
     for ( var i = 0; i < indices.length; ++i ) {
       points.push( vertices[indices[i]] );
