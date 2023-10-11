@@ -61,6 +61,7 @@ window.onload = function init()
     gl.vertexAttribPointer( vPosition, 3, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
+
     matrixLoc = gl.getUniformLocation( program, "rotation" );
 
     //event listeners for mouse
@@ -131,7 +132,11 @@ function render()
     for( let i = 0; i < NumVertices; i++ ) {
       gl.drawArrays( gl.LINE_LOOP, i*4, 4);
     }
-
+    
+    var fishBuffer = gl.createBuffer();
+    gl.bindBuffer( gl. ARRAY_BUFFER, fishBuffer);
+    gl.bufferData( gl. ARRAY_BUFFER, flatten(fish_vertices),gl.STATIC_DRAW);
+    gl.vertexAttribPointer(vPosition,3,gl.FLOAT,false,0,0);
     requestAnimFrame( render );
 }
 
@@ -147,7 +152,7 @@ class Fish {
       vec3(this.pos),
       vec3(this.pos[0]-0.2,this.pos[1],this.pos[2]+0.2),
       vec3(this.pos[0]-0.2,this.pos[1],this.pos[2]-0.2)
-    ]:
+    ];
     body = [
       vec3(head[1]-0.3,this.pos[1],this.pos[2]),
       vec3(head[1]),
