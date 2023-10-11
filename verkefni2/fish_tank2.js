@@ -103,29 +103,34 @@ function quad(a, b, c, d)
 
 
 class Fish {
-  constructor() {
+  constructor(xLength,zWidth) {
     this.pos= vec3(0.0,0.0,0.0) // point of the head, used to define the rest of the vertices
     this.dir= vec3(0.1,0.0,0.1)
     this.color = vec4(0.0,0.0,1.0,1.0);
     this.vertices = this.initialize_fish_vertices()
+    this.xLength = vec3(xLength,this.pos[1],this.pos[2]);
+    this.zWidth = zWidth;
   }
   initialize_fish_vertices() {
+    fishTop = this.pos[2]+this.zWidth; // z value
+    fishBot = this.pos[2]-this.zWidth; // z value 
     let head = [
-      vec3(this.pos),
-      vec3(this.pos[0]-0.2,this.pos[1],this.pos[2]+0.2),
-      vec3(this.pos[0]-0.2,this.pos[1],this.pos[2]-0.2)
+      this.pos,
+      vec3(mix(this.pos[0],xLength,0.25),this.pos[1],fishTop),
+      vec3(mix(this.pos[0],xLength,0.25),this.pos[1],fishBot)
     ];
     let body = [
-      vec3(head[1][0]-0.3,this.pos[1],this.pos[2]),
+      vec3(mix(this.pos[0],xLength,0.75),this.pos[1],this.pos[2]),
       vec3(head[1]),
       vec3(head[2])
     ];
     let tail = [
       vec3(body[0]),
-      vec3(body[0][0]-0.1,body[1][1],body[0][0]+0.1),
-      vec3(body[0][0]-0.1,body[1][1],body[0][0]-0.1)
+      vec3(xLength[0],this.pos[1],fishTop),
+      vec3(xLength[0],body[1],fishBot)
     ];
-    let fins_x_pos = vec3(mix(body[0],this.pos,0.3));
+    // fins hardkóðaðir meira, nenni ekki ad henda in mix föllum
+    let fins_x_pos = vec3(mix(this.pos[0],xLength,0.5));
     let fins1 = [
       fins_x_pos,
       vec3(fins_x_pos[0]-0.1,fins_x_pos[1]+0.1,fins_x_pos[2]+0.1),
@@ -136,7 +141,7 @@ class Fish {
       vec3(fins_x_pos[0]-0.1,fins_x_pos[1]-0.1,fins_x_pos[2]+0.1),
       vec3(fins_x_pos[0]-0.1,fins_x_pos[1]-0.1,fins_x_pos[2]-0.1)
     ];
-    fish_vertices = [head,body,tail,fins1,fins2];
+    return [head,body,tail,fins1,fins2];
   }
 }
 function renderBox() {
