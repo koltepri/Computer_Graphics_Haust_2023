@@ -24,6 +24,8 @@ var matrixLoc;
 var fish_vertices = [];
 var fish_colors = [];
 
+var vPosition;
+
 window.onload = function init()
 {
     canvas = document.getElementById( "gl-canvas" );
@@ -57,7 +59,7 @@ window.onload = function init()
     gl.bindBuffer( gl.ARRAY_BUFFER, vBuffer );
     gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
 
-    var vPosition = gl.getAttribLocation( program, "vPosition" );
+    vPosition = gl.getAttribLocation( program, "vPosition" );
     gl.vertexAttribPointer( vPosition, 3, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
@@ -136,6 +138,7 @@ function render()
     var fishBuffer = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, fishBuffer);
     gl.bufferData( gl.ARRAY_BUFFER, flatten(fish_vertices),gl.STATIC_DRAW);
+    gl.vertexAttribPointer(vPosition,3,gl.FLOAT,false,0,0);
     gl.drawArrays( gl.TRIANGLES, 0,25 ); // hardcoded for now
     requestAnimFrame( render );
 }
