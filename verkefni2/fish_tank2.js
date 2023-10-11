@@ -112,8 +112,8 @@ class Fish {
     this.zWidth = zWidth;
   }
   initialize_fish_vertices() {
-    fishTop = this.pos[2]+this.zWidth; // z value
-    fishBot = this.pos[2]-this.zWidth; // z value 
+    let fishTop = this.pos[2]+this.zWidth; // z value
+    let fishBot = this.pos[2]-this.zWidth; // z value 
     let head = [
       this.pos,
       vec3(mix(this.pos[0],xLength,0.25),this.pos[1],fishTop),
