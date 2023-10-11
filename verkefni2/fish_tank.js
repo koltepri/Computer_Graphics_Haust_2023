@@ -162,7 +162,7 @@ class Fish {
       vec3(body[0]),
       vec3(body[0]-0.1,body[1],body[0]+0.1),
       vec3(body[0]-0.1,body[1],body[0]-0.1)
-    ]:
+    ];
     fins_x_pos = vec3(mix(body[0],this.pos,0.3)),
     fins1 = [
       fins_x_pos,
