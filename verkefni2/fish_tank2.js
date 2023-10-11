@@ -97,7 +97,7 @@ function quad(a, b, c, d)
     var indices = [ a, b, c, d];
 
     for ( var i = 0; i < indices.length; ++i ) {
-      fish_cage.push( vertices[indices[i]] );
+      cage_vertices.push( vertices[indices[i]] );
     }
 }
 
