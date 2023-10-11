@@ -134,8 +134,9 @@ function render()
     }
     
     var fishBuffer = gl.createBuffer();
-    gl.bindBuffer( gl. ARRAY_BUFFER, fishBuffer);
-    gl.bufferData( gl. ARRAY_BUFFER, flatten(fish_vertices),gl.STATIC_DRAW);
+    gl.bindBuffer( gl.ARRAY_BUFFER, fishBuffer);
+    gl.bufferData( gl.ARRAY_BUFFER, flatten(fish_vertices),gl.STATIC_DRAW);
+    gl.drawArrays( gl.TRIANGLES, 0,25 ); // hardcoded for now
     requestAnimFrame( render );
 }
 
