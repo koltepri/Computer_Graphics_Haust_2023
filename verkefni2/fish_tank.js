@@ -145,7 +145,7 @@ class Fish {
     this.pos= vec3(0.0,0.0,0.0) // point of the head, used to define the rest of the vertices
     this.dir= vec3(0.1,0.0,0.1)
     this.color = vec4(0.0,0.0,1.0,1.0);
-    this.vertices = initialize_fish_vertices()
+    this.vertices = this.initialize_fish_vertices()
   }
   initialize_fish_vertices() {
     head = [
