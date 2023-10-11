@@ -21,6 +21,9 @@ var origY;
 
 var matrixLoc;
 
+var fish_vertices = [];
+var fish_colors = [];
+
 window.onload = function init()
 {
     canvas = document.getElementById( "gl-canvas" );
@@ -29,6 +32,7 @@ window.onload = function init()
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
     fish_cage();
+    fish = new Fish();   
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
@@ -131,4 +135,40 @@ function render()
     requestAnimFrame( render );
 }
 
-
+class Fish {
+  constructor() {
+    this.pos= vec3(0.0,0.0,0.0) // point of the head, used to define the rest of the vertices
+    this.dir= vec3(0.1,0.0,0.1)
+    this.color = vec4(0.0,0.0,1.0,1.0);
+    this.vertices = initialize_fish_vertices()
+  }
+  initialize_fish_vertices() {
+    head = [
+      vec3(this.pos),
+      vec3(this.pos[0]-0.2,this.pos[1],this.pos[2]+0.2),
+      vec3(this.pos[0]-0.2,this.pos[1],this.pos[2]-0.2)
+    ]:
+    body = [
+      vec3(head[1]-0.3,this.pos[1],this.pos[2]),
+      vec3(head[1]),
+      vec3(head[2])
+    ];
+    tail = [
+      vec3(body[0]),
+      vec3(body[0]-0.1,body[1],body[0]+0.1),
+      vec3(body[0]-0.1,body[1],body[0]-0.1)
+    ]:
+    fins_x_pos = vec3(mix(body[0],this.pos,0.3)),
+    fins1 = [
+      fins_x_pos,
+      vec3(fins_x_pos[0]-0.1,fins_x_pos[1]+0.1,fins_x_pos[2]+0.1),
+      vec3(fins_x_pos[0]-0.1,fins_x_pos[1]+0.1,fins_x_pos[2]-0.1)
+    ];
+    fins1 = [
+      fins_x_pos,
+      vec3(fins_x_pos[0]-0.1,fins_x_pos[1]-0.1,fins_x_pos[2]+0.1),
+      vec3(fins_x_pos[0]-0.1,fins_x_pos[1]-0.1,fins_x_pos[2]-0.1)
+    ];
+    fish_vertices = [head,body,tail,fins1,fins2];
+  }
+}
