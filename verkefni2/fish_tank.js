@@ -163,7 +163,7 @@ class Fish {
       vec3(body[0]-0.1,body[1],body[0]+0.1),
       vec3(body[0]-0.1,body[1],body[0]-0.1)
     ];
-    let fins_x_pos = vec3(mix(body[0],this.pos,0.3)),
+    let fins_x_pos = vec3(mix(body[0],this.pos,0.3));
     let fins1 = [
       fins_x_pos,
       vec3(fins_x_pos[0]-0.1,fins_x_pos[1]+0.1,fins_x_pos[2]+0.1),
