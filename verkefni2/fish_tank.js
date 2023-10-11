@@ -136,7 +136,6 @@ function render()
     var fishBuffer = gl.createBuffer();
     gl.bindBuffer( gl. ARRAY_BUFFER, fishBuffer);
     gl.bufferData( gl. ARRAY_BUFFER, flatten(fish_vertices),gl.STATIC_DRAW);
-    gl.vertexAttribPointer(vPosition,3,gl.FLOAT,false,0,0);
     requestAnimFrame( render );
 }
 
