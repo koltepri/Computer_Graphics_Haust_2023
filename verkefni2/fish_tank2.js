@@ -165,7 +165,7 @@ function renderFish() {
       flatten(fish_vertices),gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,3,gl.FLOAT,false,0,0);
     gl.uniform4fv(locColor, flatten(OGfish.color))
-    gl.drawArrays( gl.TRIANGLES, 0, fishVertexLength); // hardcoded for now
+    gl.drawArrays( gl.TRIANGLES, 0, fishVertexLength); // hardcoded for now,,
 }
 function render()
 {
