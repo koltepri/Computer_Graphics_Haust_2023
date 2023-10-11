@@ -116,21 +116,21 @@ class Fish {
     let fishBot = this.pos[2]-this.zWidth; // z value 
     let head = [
       this.pos,
-      vec3(mix(this.pos[0],xLength,0.25),this.pos[1],fishTop),
-      vec3(mix(this.pos[0],xLength,0.25),this.pos[1],fishBot)
+      vec3(mix(this.pos[0],this.xLength,0.25),this.pos[1],fishTop),
+      vec3(mix(this.pos[0],this.xLength,0.25),this.pos[1],fishBot)
     ];
     let body = [
-      vec3(mix(this.pos[0],xLength,0.75),this.pos[1],this.pos[2]),
+      vec3(mix(this.pos[0],this.xLength,0.75),this.pos[1],this.pos[2]),
       vec3(head[1]),
       vec3(head[2])
     ];
     let tail = [
       vec3(body[0]),
-      vec3(xLength[0],this.pos[1],fishTop),
-      vec3(xLength[0],body[1],fishBot)
+      vec3(this.xLength[0],this.pos[1],fishTop),
+      vec3(this.xLength[0],body[1],fishBot)
     ];
     // fins hardkóðaðir meira, nenni ekki ad henda in mix föllum
-    let fins_x_pos = vec3(mix(this.pos[0],xLength,0.5));
+    let fins_x_pos = vec3(mix(this.pos[0],this.xLength,0.5));
     let fins1 = [
       fins_x_pos,
       vec3(fins_x_pos[0]-0.1,fins_x_pos[1]+0.1,fins_x_pos[2]+0.1),
