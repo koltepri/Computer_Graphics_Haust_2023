@@ -11,6 +11,13 @@ var matrixLoc;
 var vPosition;
 
 var OGfish;
+var fishVertexLength:
+
+var movement = false;     // Do we rotate?
+var spinX = 0;
+var spinY = 0;
+var origX;
+var origY;
 
 window.onload = function init()
 {
@@ -158,7 +165,7 @@ function renderFish() {
       flatten(fish_vertices),gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,3,gl.FLOAT,false,0,0);
     gl.uniform4fv(locColor, flatten(OGfish.color))
-    gl.drawArrays( gl.TRIANGLES, 0, 15 ); // hardcoded for now
+    gl.drawArrays( gl.TRIANGLES, 0, fishVertexLength); // hardcoded for now
 }
 function render()
 {
