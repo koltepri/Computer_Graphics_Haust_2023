@@ -167,7 +167,7 @@ function renderFish() {
     var fishBuffer = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, fishBuffer);
     gl.bufferData( gl.ARRAY_BUFFER, 
-      flatten(fish_vertices),gl.STATIC_DRAW);
+      flatten(OGfish.vertices),gl.STATIC_DRAW);
     gl.vertexAttribPointer(vPosition,3,gl.FLOAT,false,0,0);
     gl.uniform4fv(locColor, flatten(OGfish.color))
     gl.drawArrays( gl.TRIANGLES, 0, fishVertexLength); // hardcoded for now,,
