@@ -148,28 +148,28 @@ class Fish {
     this.vertices = this.initialize_fish_vertices()
   }
   initialize_fish_vertices() {
-    head = [
+    let head = [
       vec3(this.pos),
       vec3(this.pos[0]-0.2,this.pos[1],this.pos[2]+0.2),
       vec3(this.pos[0]-0.2,this.pos[1],this.pos[2]-0.2)
     ];
-    body = [
+    let body = [
       vec3(head[1]-0.3,this.pos[1],this.pos[2]),
       vec3(head[1]),
       vec3(head[2])
     ];
-    tail = [
+    let tail = [
       vec3(body[0]),
       vec3(body[0]-0.1,body[1],body[0]+0.1),
       vec3(body[0]-0.1,body[1],body[0]-0.1)
     ];
-    fins_x_pos = vec3(mix(body[0],this.pos,0.3)),
-    fins1 = [
+    let fins_x_pos = vec3(mix(body[0],this.pos,0.3)),
+    let fins1 = [
       fins_x_pos,
       vec3(fins_x_pos[0]-0.1,fins_x_pos[1]+0.1,fins_x_pos[2]+0.1),
       vec3(fins_x_pos[0]-0.1,fins_x_pos[1]+0.1,fins_x_pos[2]-0.1)
     ];
-    fins1 = [
+    let fins1 = [
       fins_x_pos,
       vec3(fins_x_pos[0]-0.1,fins_x_pos[1]-0.1,fins_x_pos[2]+0.1),
       vec3(fins_x_pos[0]-0.1,fins_x_pos[1]-0.1,fins_x_pos[2]-0.1)
