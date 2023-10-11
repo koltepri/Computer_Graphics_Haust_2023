@@ -27,7 +27,7 @@ window.onload = function init()
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
     fish_cage(); // define cage vertices
-    OGfish = new Fish();   
+    OGfish = new Fish(0.3,0.2);   
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
