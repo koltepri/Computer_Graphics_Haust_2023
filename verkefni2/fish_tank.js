@@ -153,14 +153,14 @@ class Fish {
       vec3(this.pos[0]-0.2,this.pos[1],this.pos[2]-0.2)
     ];
     let body = [
-      vec3(head[1]-0.3,this.pos[1],this.pos[2]),
+      vec3(head[1][0]-0.3,this.pos[1],this.pos[2]),
       vec3(head[1]),
       vec3(head[2])
     ];
     let tail = [
       vec3(body[0]),
-      vec3(body[0]-0.1,body[1],body[0]+0.1),
-      vec3(body[0]-0.1,body[1],body[0]-0.1)
+      vec3(body[0][0]-0.1,body[1][1],body[0][0]+0.1),
+      vec3(body[0][0]-0.1,body[1][1],body[0][0]-0.1)
     ];
     let fins_x_pos = vec3(mix(body[0],this.pos,0.3));
     let fins1 = [
