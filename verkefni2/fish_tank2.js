@@ -11,7 +11,7 @@ var matrixLoc;
 var vPosition;
 
 var OGfish;
-var fishVertexLength:
+var fishVertexLength;
 
 var movement = false;     // Do we rotate?
 var spinX = 0;
