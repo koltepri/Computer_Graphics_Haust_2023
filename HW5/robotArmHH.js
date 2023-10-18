@@ -50,6 +50,8 @@ var LOWER_ARM_HEIGHT = 5.0;
 var LOWER_ARM_WIDTH  = 0.5;
 var UPPER_ARM_HEIGHT = 5.0;
 var UPPER_ARM_WIDTH  = 0.5;
+var UPPER_UPPER_ARM_HEIGHT = 2.0;
+var UPPER_UPPER_ARM_WIDTH = 0.5;
 
 // Shader transformation matrices
 
@@ -60,9 +62,10 @@ var modelViewMatrix, projectionMatrix;
 var Base = 0;
 var LowerArm = 1;
 var UpperArm = 2;
+var UpperUpperArm = 3;
 
 
-var theta= [ 0, 0, 0];
+var theta= [ 0, 0, 0, 0];
 
 var angle = 0;
 
@@ -248,6 +251,14 @@ function upperArm() {
     gl.drawArrays( gl.TRIANGLES, 0, NumVertices );
 }
 
+function upperUpperArm() {
+    var s = scalem(UPPER_UPPER_ARM_WIDTH, UPPER_UPPER_ARM_HEIGHT, UPPER_UPPER_ARM_WIDTH);
+    var instanceMatrix = mult(translate( 0.0, 0.5 * UPPER_UPPER_ARM_HEIGHT, 0.0 ),s);    
+    var t = mult(modelViewMatrix, instanceMatrix);
+    gl.uniformMatrix4fv( modelViewMatrixLoc,  false, flatten(t) );
+    gl.drawArrays( gl.TRIANGLES, 0, NumVertices );
+}
+
 //----------------------------------------------------------------------------
 
 
@@ -281,6 +292,10 @@ var render = function() {
 
     modelViewMatrix  = mult(modelViewMatrix, translate(0.0, LOWER_ARM_HEIGHT, 0.0));
     modelViewMatrix  = mult(modelViewMatrix, rotateZ( theta[UpperArm] ) );
+    upperArm();
+
+    modelViewMatrix  = mult(modelViewMatrix, translate(0.0, UPPER_ARM_HEIGHT, 0.0));
+    modelViewMatrix  = mult(modelViewMatrix, rotateZ( theta[UpperUpperArm] ) );
     upperArm();
 
     requestAnimFrame(render);
