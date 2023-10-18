@@ -19,6 +19,12 @@ var spinY = 0;
 var origX;
 var origY;
 
+var spin = dfasdfadsfasfdasfdas;
+
+
+
+
+
 window.onload = function init()
 {
     canvas = document.getElementById( "gl-canvas" );
@@ -179,3 +185,4 @@ function render()
     renderFish();
     requestAnimFrame( render );
 }
+
