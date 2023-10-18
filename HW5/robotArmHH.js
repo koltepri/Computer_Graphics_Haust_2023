@@ -302,7 +302,7 @@ var render = function() {
 
     modelViewMatrix  = mult(modelViewMatrix, translate(0.0, UPPER_ARM_HEIGHT, 0.0));
     modelViewMatrix  = mult(modelViewMatrix, rotateZ( theta[UpperUpperArm] ) );
-    upperArm();
+    upperUpperArm();
 
     requestAnimFrame(render);
 }
