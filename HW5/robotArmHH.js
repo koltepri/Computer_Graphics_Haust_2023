@@ -50,7 +50,7 @@ var LOWER_ARM_HEIGHT = 5.0;
 var LOWER_ARM_WIDTH  = 0.5;
 var UPPER_ARM_HEIGHT = 5.0;
 var UPPER_ARM_WIDTH  = 0.5;
-var UPPER_UPPER_ARM_HEIGHT = 2.0;
+var UPPER_UPPER_ARM_HEIGHT = 1.0;
 var UPPER_UPPER_ARM_WIDTH = 0.5;
 
 // Shader transformation matrices
@@ -208,10 +208,10 @@ window.onload = function init() {
 			    theta[1] = Math.max(-80, theta[1]-5);
                 break;
             case 81:	// q - snýr efri armi
-			    theta[2] = Math.min(170, theta[2]+5);
+			    theta[2] = Math.min(90, theta[2]+5);
                 break;
             case 87:	// w - snýr efri armi
-			    theta[2] = Math.max(-170, theta[2]-5);
+			    theta[2] = Math.max(-90, theta[2]-5);
                 break;
             case 68: //d snyr efsta armi
           theta[3] = Math.min(170, theta[3]+5)
