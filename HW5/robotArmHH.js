@@ -214,7 +214,7 @@ window.onload = function init() {
 			    theta[2] = Math.max(-170, theta[2]-5);
                 break;
             case 68: //d snyr efsta armi
-          theta[3] = Math.min(-170, theta[3]+5)
+          theta[3] = Math.min(170, theta[3]+5)
                 break;
             case 70: // f snyr efsta armi
           theta[3] = Math.max(-170, theta[3]-5)
